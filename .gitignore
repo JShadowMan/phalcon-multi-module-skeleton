@@ -1,2 +1,6 @@
+# phalcon
 /cache/
 /config/development/
+
+# jetbrains
+.idea
