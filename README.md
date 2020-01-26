@@ -1,2 +1,2 @@
-# phalcon-multi-module-skeleton
+# phalcon-skeleton
 A phalcon template for multi module

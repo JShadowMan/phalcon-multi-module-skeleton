@@ -1,6 +1,13 @@
-# phalcon
-/cache/
-/config/development/
+# zend studio
+.settings
+.buildpath
+.project
 
-# jetbrains
+# idea
 .idea
+
+# composer
+/vendor/
+
+# environment
+.env
