@@ -5,7 +5,7 @@
  * @package   phalcon-skelton
  * @author    Jayson Wang <jayson@laboys.org>
  * @copyright Copyright (C) 2020 Jayson Wang
- * @license   BSD 3-Clause
+ * @license   MIT License
  * @link      https://github.com/lsalio/phalcon-skeleton
  */
 declare(strict_types=1);
