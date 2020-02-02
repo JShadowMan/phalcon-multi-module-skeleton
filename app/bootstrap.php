@@ -39,7 +39,7 @@ error_reporting(E_ALL);
 
 // load environment
 try {
-    Dotenv::create(APP_DOCUMENT_ROOT)->load();
+    Dotenv::createImmutable(APP_DOCUMENT_ROOT)->load();
 } catch (InvalidPathException $e) {
     // skip exceptions
 }
@@ -88,7 +88,12 @@ if (!function_exists('storage_path')) {
      * @return string
      */
     function storage_path(string $path = ''): string {
-        return APP_DOCUMENT_ROOT . '/storage' . ($path ? "/{$path}" : '');
+        $basedir = env('STORAGE_PATH');
+        if (empty($basedir) || ($basedir[0] !== '/' && $basedir[1] !== ':')) {
+            $basedir = APP_DOCUMENT_ROOT . '/storage';
+        }
+
+        return $basedir . ($path ? "/{$path}" : '');
     }
 }
 
@@ -100,7 +105,7 @@ if (!function_exists('cache_path')) {
      * @return string
      */
     function cache_path(string $path = ''): string {
-        return storage_path('cache') . ($path ? "/{$path}" : '');
+        return storage_path(env('STORAGE_CACHE_PATH', 'cache')) . ($path ? "/{$path}" : '');
     }
 }
 

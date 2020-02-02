@@ -8,6 +8,7 @@
  */
 namespace App\Provider\Config;
 
+use App\Library\Config\Factory;
 use App\Provider\AbstractServiceProvider;
 
 
@@ -35,6 +36,7 @@ final class ServiceProvider extends AbstractServiceProvider {
         'database',
         'locale',
         'logger',
+        'modules',
         'session',
         'timezone'
     ];

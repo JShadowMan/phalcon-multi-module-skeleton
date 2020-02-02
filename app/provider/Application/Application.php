@@ -34,10 +34,8 @@ final class Application extends MvcApplication {
      * to the application
      */
     final private function setupModules() {
-        $this->registerModules([
-            // App Module
-        ]);
-        $this->setDefaultModule('tinder');
+        $this->registerModules(container('config')->modules->classes->toArray());
+        $this->setDefaultModule(container('config')->modules->default);
     }
 
 }
