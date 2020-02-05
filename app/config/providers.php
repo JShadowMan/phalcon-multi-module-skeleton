@@ -7,7 +7,9 @@
  * @link      https://github.com/lsalio/phalcon-skeleton
  */
 return [
+    /* basic services */
     App\Provider\Application\ServiceProvider::class,
+    App\Provider\AutoLoader\ServiceProvider::class,
     App\Provider\Cache\ServiceProvider::class,
     App\Provider\Config\ServiceProvider::class,
     App\Provider\Cookies\ServiceProvider::class,
@@ -22,4 +24,8 @@ return [
     App\Provider\UrlResolver\ServiceProvider::class,
     App\Provider\ViewCache\ServiceProvider::class,
     App\Provider\Volt\ServiceProvider::class,
+
+    /* template services */
+    App\Provider\DispatcherTemplate\ServiceProvider::class,
+    App\Provider\ViewTemplate\ServiceProvider::class,
 ];

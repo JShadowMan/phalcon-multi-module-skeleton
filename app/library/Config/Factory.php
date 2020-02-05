@@ -8,6 +8,7 @@
  */
 namespace App\Library\Config;
 
+use App\Library\Exception\Runtime\InvalidParameterException;
 use League\Flysystem\Filesystem;
 use Phalcon\Config;
 
@@ -19,32 +20,66 @@ use Phalcon\Config;
 class Factory {
 
     /**
-     * Create configure object
+     * The name of the service
+     *
+     * @var string
+     */
+    protected $name;
+
+    /**
+     * The callable to load config
+     *
+     * @var callable|string|array
+     */
+    protected $loader;
+
+    /**
+     * Factory constructor.
+     *
+     * @param string $name The name of the factory and using cache filename
+     * @param callable|string|array $loader The loader receive an string of relative path to load and returns a array
+     * @throws InvalidParameterException
+     */
+    public function __construct(string $name, $loader = 'config_path') {
+        $this->name = "{$name}_-_-";
+        $this->loader = $loader;
+        if (!is_callable($this->loader)) {
+            throw new InvalidParameterException("The loader except callable");
+        }
+    }
+
+    /**
+     * Load all modules and returns a config
      *
      * @param array $configs
-     * @param string $base
      * @return Config
      */
-    public static function create(array $configs = [], string $base = ''): Config {
+    public function load(array $configs = []): Config {
         $config = new Config();
-        $filename = str_replace(['\\', '/', ':'], '_', $base);
-        if (empty($filename)) {
-            $filename = 'global';
-        }
         $basedir = cache_path(env('STORAGE_CACHE_CONFIG_PATH', 'config'));
 
         /* @var $filesystem Filesystem */
         $filesystem = container('filesystem', $basedir);
-        if ($filesystem->has("{$filename}.php") && !environment('development')) {
-            return static::merge($config, $basedir . "/{$filename}.php");
+        if ($filesystem->has("{$this->name}.php") && !environment('development')) {
+            return static::merge($config, $basedir . "/{$this->name}.php");
         }
 
         foreach ($configs as $cfg) {
-            static::merge($config, config_path("{$cfg}.php"), ($cfg === 'config' ? null : $cfg));
+            static::merge($config, $this->buildPath("{$cfg}.php"), ($cfg === 'config' ? null : $cfg));
         }
 
-        static::dump($filesystem, "{$filename}.php", $config->toArray());
+        static::dump($filesystem, "{$this->name}.php", $config->toArray());
         return $config;
+    }
+
+    /**
+     * Returns the string of the absolute path to import
+     *
+     * @param string $path
+     * @return string
+     */
+    protected function buildPath(string $path = ''): string {
+        return call_user_func($this->loader, $path);
     }
 
     /**

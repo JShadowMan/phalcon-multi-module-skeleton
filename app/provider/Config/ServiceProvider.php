@@ -47,7 +47,7 @@ final class ServiceProvider extends AbstractServiceProvider {
     final public function register() {
         $configs = $this->configs;
         $this->di->setShared($this->service_name, function() use ($configs) {
-            return Factory::create($configs);
+            return (new Factory('global'))->load($configs);
         });
     }
 

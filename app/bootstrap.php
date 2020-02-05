@@ -10,7 +10,6 @@ use Dotenv\Dotenv;
 use Dotenv\Exception\InvalidPathException;
 use Phalcon\Di;
 use Phalcon\DiInterface;
-use Phalcon\Loader;
 
 
 /**
@@ -223,8 +222,3 @@ if (!function_exists('_url')) {
         return container('url')->get($uri, $args, $local, $baseUri);
     }
 }
-
-// Load the utility functions
-(new Loader())->registerFiles([
-    app_path('library/Xet/functions.php')
-])->register();

@@ -6,7 +6,7 @@
  * @license   MIT License
  * @link      https://github.com/lsalio/phalcon-skeleton
  */
-namespace App\Provider\DispatcherFactory;
+namespace App\Provider\DispatcherTemplate;
 
 use App\Library\Listener\Adapter\Dispatcher as DispatcherListener;
 use App\Provider\AbstractServiceProvider;
@@ -15,7 +15,7 @@ use Phalcon\Mvc\Dispatcher as MvcDispatcher;
 
 /**
  * Class ServiceProvider
- * @package App\Provider\DispatcherFactory
+ * @package App\Provider\DispatcherTemplate
  */
 class ServiceProvider extends AbstractServiceProvider {
 
@@ -24,7 +24,7 @@ class ServiceProvider extends AbstractServiceProvider {
      *
      * @var string
      */
-    protected $service_name = 'dispatcherFactory';
+    protected $service_name = 'dispatcherTemplate';
 
     /**
      * @inheritDoc
