@@ -17,7 +17,7 @@ use Phalcon\Mvc\ViewBaseInterface;
  * Class View
  * @package App\Library\Listener\Adapter
  */
-final class View extends AbstractListener {
+class View extends AbstractListener {
 
     /**
      * Notify about not found views
@@ -28,7 +28,7 @@ final class View extends AbstractListener {
      * @param string $engine_path
      *
      */
-    final public function notFoundView(Event $event, ViewBaseInterface $view, string $engine_path) {
+    public function notFoundView(Event $event, ViewBaseInterface $view, string $engine_path) {
         // @TODO logger on not found
         if ($event->isCancelable()) {
             $event->stop();

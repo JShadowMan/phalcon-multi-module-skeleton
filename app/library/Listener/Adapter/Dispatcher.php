@@ -18,7 +18,7 @@ use Throwable;
  * Class Dispatcher
  * @package App\Library\Listener\Adapter
  */
-final class Dispatcher extends AbstractListener {
+class Dispatcher extends AbstractListener {
 
     /**
      * Triggered before the dispatcher throws any exception
@@ -27,7 +27,7 @@ final class Dispatcher extends AbstractListener {
      * @param MvcDispatcher $dispatcher
      * @param Throwable $exception
      */
-    final public function beforeException(Event $event, MvcDispatcher $dispatcher, Throwable $exception) {
+    public function beforeException(Event $event, MvcDispatcher $dispatcher, Throwable $exception) {
         echo $exception->getMessage() . PHP_EOL;
         echo $dispatcher->getControllerName() . '::' . $dispatcher->getActionName() . PHP_EOL;
         echo "<pre>";

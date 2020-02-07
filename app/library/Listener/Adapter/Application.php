@@ -12,7 +12,7 @@ use App\Library\Listener\AbstractListener;
 
 
 /**
- * Class Router
+ * Class Application
  * @package App\Library\Listener\Adapter
  */
-class Router extends AbstractListener {}
+class Application extends AbstractListener {}

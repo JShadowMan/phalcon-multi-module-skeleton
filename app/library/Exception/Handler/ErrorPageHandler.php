@@ -27,24 +27,19 @@ final class ErrorPageHandler extends Handler {
      * @throws Exception
      */
     final public function handle() {
-        $error = container('config')->error;
-        /* @var Dispatcher $dispatcher */
-        $dispatcher = container('dispatcher');
-        /* @var View $view */
-        $view = container('view');
-        /* @var Response $response */
-        $response = container('response');
+        try {
+            $error = container('config')->error;
+            /* @var Dispatcher $dispatcher */
+            $dispatcher = container('dispatcher');
 
-        $dispatcher->setControllerName($error->controller);
-        $dispatcher->setActionName($error->action);
+            $dispatcher->setControllerName($error->controller);
+            $dispatcher->setActionName($error->action);
+            $dispatcher->dispatch();
 
-        $view->start();
-        $dispatcher->dispatch();
-        $view->render($error->controller, $error->action, $dispatcher->getParams());
-        $view->finish();
-
-        $response->setContent($view->getContent())->send();
-        return self::QUIT;
+            return self::QUIT;
+        } catch (\Throwable $e) {
+            return self::DONE;
+        }
     }
 
 }

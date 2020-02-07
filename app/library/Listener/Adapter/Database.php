@@ -16,7 +16,7 @@ use Phalcon\Events\Event;
  * Class Database
  * @package App\Library\Listener
  */
-final class Database {
+class Database {
 
     /**
      * Database queries listener
@@ -25,7 +25,7 @@ final class Database {
      * @param Pdo $connection
      * @return bool
      */
-    final public function beforeQuery(Event $event, Pdo $connection): bool {
+    public function beforeQuery(Event $event, Pdo $connection): bool {
         $statement = $connection->getSQLStatement();
         $variables = $connection->getSqlVariables();
 

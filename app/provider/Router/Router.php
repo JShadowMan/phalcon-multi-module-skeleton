@@ -30,6 +30,12 @@ final class Router extends MvcRouter {
             'action' => 3,
             'params' => 4
         ]);
+        $this->add('/(v\d+)/:module/:controller/:action/:params', [
+            'module' => 2,
+            'controller' => 3,
+            'action' => 4,
+            'params' => 5
+        ]);
     }
 
 }
