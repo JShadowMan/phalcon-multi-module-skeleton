@@ -17,6 +17,7 @@ use App\Skeleton\Library\Mvc\Controller\AbstractController;
  */
 class IndexController extends AbstractController {
 
-    public function indexAction() {}
+    public function indexAction($abc = null) {
+    }
 
 }

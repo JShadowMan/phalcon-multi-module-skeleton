@@ -9,6 +9,8 @@
 namespace App\Library\Listener\Adapter;
 
 use App\Library\Listener\AbstractListener;
+use App\Library\Mvc\Controller\Utils\Feature;
+use Exception;
 use Phalcon\Events\Event;
 use Phalcon\Mvc\Dispatcher as MvcDispatcher;
 use Throwable;
@@ -26,14 +28,16 @@ class Dispatcher extends AbstractListener {
      * @param Event $event
      * @param MvcDispatcher $dispatcher
      * @param Throwable $exception
+     * @return bool|void
+     * @throws Exception
      */
     public function beforeException(Event $event, MvcDispatcher $dispatcher, Throwable $exception) {
-        echo $exception->getMessage() . PHP_EOL;
-        echo $dispatcher->getControllerName() . '::' . $dispatcher->getActionName() . PHP_EOL;
-        echo "<pre>";
-        var_dump($exception);
-        echo "</pre>";
-        die();
+        if (env('VERSION_FEATURE') && Feature::isCannotLoadedException($exception)) {
+            $dispatcher->forward([
+                'namespace' => Feature::fallbackVersion($dispatcher->getDefaultNamespace())
+            ]);
+            return false;
+        }
     }
 
 }

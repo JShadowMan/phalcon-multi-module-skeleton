@@ -14,7 +14,10 @@ return [
         'skeleton' => [
             'path' => module_path('skeleton/Module.php'),
             'className' => SkeletonModule::class,
-        ]
+            'metadata' => [
+                'version_feature' => true,
+            ]
+        ],
     ],
 
     'default' => env('MODULE_DEFAULT', null)

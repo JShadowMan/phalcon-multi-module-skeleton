@@ -34,6 +34,20 @@ class Factory {
     protected $loader;
 
     /**
+     * The prefix string of cache filename
+     *
+     * @var string
+     */
+    protected static $prefix = '__';
+
+    /**
+     * The suffix string of cache filename
+     *
+     * @var string
+     */
+    protected static $suffix = '__';
+
+    /**
      * Factory constructor.
      *
      * @param string $name The name of the factory and using cache filename
@@ -41,7 +55,7 @@ class Factory {
      * @throws InvalidParameterException
      */
     public function __construct(string $name, $loader = 'config_path') {
-        $this->name = "{$name}_-_-";
+        $this->name = join('', [self::$prefix, $name, self::$suffix]);
         $this->loader = $loader;
         if (!is_callable($this->loader)) {
             throw new InvalidParameterException("The loader except callable");

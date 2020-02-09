@@ -9,6 +9,7 @@
 namespace App\Provider\DispatcherTemplate;
 
 use App\Library\Listener\Adapter\Dispatcher as DispatcherListener;
+use App\Library\Mvc\Controller\Utils\Feature;
 use App\Provider\AbstractServiceProvider;
 use Phalcon\Mvc\Dispatcher as MvcDispatcher;
 
@@ -36,7 +37,7 @@ class ServiceProvider extends AbstractServiceProvider {
             container('eventsManager')->attach('dispatch', new DispatcherListener());
 
             if (!empty($config['controllerNamespace'])) {
-                $dispatcher->setDefaultNamespace($config['controllerNamespace']);
+                $dispatcher->setDefaultNamespace(Feature::versionOf($config['controllerNamespace']));
             }
 
             return $dispatcher;

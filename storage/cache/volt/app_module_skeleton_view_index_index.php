@@ -3,5 +3,6 @@
   <article>
     <p>Congratulations, the skeleton installation is complete.</p>
     <p><a href="<?= $this->moduleConfig->source->github ?>" target="_blank">View Source</a></p>
+    <p><?= $abc ?></p>
   </article>
 </main>
