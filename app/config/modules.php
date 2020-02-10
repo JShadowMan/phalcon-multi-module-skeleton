@@ -15,7 +15,7 @@ return [
             'path' => module_path('skeleton/Module.php'),
             'className' => SkeletonModule::class,
             'metadata' => [
-                'version_feature' => true,
+                'versionFeature' => true,
             ]
         ],
     ],

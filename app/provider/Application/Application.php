@@ -89,7 +89,7 @@ class Application extends MvcApplication {
 
         foreach ($modules as $module) {
             if (!$this->version_feature && isset($module['metadata']) && is_array($module['metadata'])) {
-                if (isset($module['metadata']['version_feature']) && $module['metadata']['version_feature']) {
+                if (isset($module['metadata']['versionFeature']) && $module['metadata']['versionFeature']) {
                     $this->version_feature = true;
                 }
             }
