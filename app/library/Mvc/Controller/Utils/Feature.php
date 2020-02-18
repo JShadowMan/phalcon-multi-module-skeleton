@@ -8,6 +8,8 @@
  */
 namespace App\Library\Mvc\Controller\Utils;
 
+use App\Library\Listener\Adapter\Dispatcher;
+use Phalcon\Mvc\Dispatcher as MvcDispatcher;
 use Throwable;
 
 
@@ -38,8 +40,7 @@ class Feature {
      * @return bool
      */
     public static function isCannotLoadedException(Throwable $exception): bool {
-        // @TODO EXCEPTION_HANDLER_NOT_FOUND
-        return preg_match('/V(\d+).*handler class cannot be loaded$/', $exception->getMessage()) !== false;
+        return $exception->getCode() === MvcDispatcher::EXCEPTION_HANDLER_NOT_FOUND;
     }
 
     /**

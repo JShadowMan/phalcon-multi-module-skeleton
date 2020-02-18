@@ -19,4 +19,12 @@ use Phalcon\Mvc\Controller;
  * @property Config $moduleConfig
  */
 abstract class AbstractController extends Controller {
+
+    /**
+     * fix status code invalid with version feature fallback
+     */
+    public function initialize() {
+        $this->response->setStatusCode(200);
+    }
+
 }
