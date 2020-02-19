@@ -8,8 +8,8 @@
  */
 namespace App\Library\Listener\Adapter;
 
+use App\Library\Feature\Version;
 use App\Library\Listener\AbstractListener;
-use App\Library\Mvc\Controller\Utils\Feature;
 use Exception;
 use Phalcon\Events\Event;
 use Phalcon\Mvc\Dispatcher as MvcDispatcher;
@@ -32,11 +32,15 @@ class Dispatcher extends AbstractListener {
      * @throws Exception
      */
     public function beforeException(Event $event, MvcDispatcher $dispatcher, Throwable $exception) {
-        if (env('VERSION_FEATURE') && Feature::isCannotLoadedException($exception)) {
-            $dispatcher->forward([
-                'namespace' => Feature::fallbackVersion($dispatcher->getDefaultNamespace())
-            ]);
-            return false;
+        /* @var Version $version */
+        $version = container('versionFeature');
+        if ($version->isVersionHandlerException($exception)) {
+            if ($version->check($dispatcher->getModuleNameWithDefault())) {
+                $dispatcher->forward([
+                    'namespace' => $version->namespaceFallback($dispatcher->getDefaultNamespace())
+                ]);
+                return false;
+            }
         }
     }
 

@@ -12,6 +12,7 @@ use Exception;
 use Phalcon\Http\Response;
 use Phalcon\Mvc\Dispatcher;
 use Phalcon\Mvc\View;
+use Throwable;
 use Whoops\Handler\Handler;
 
 
@@ -37,7 +38,8 @@ final class ErrorPageHandler extends Handler {
             $dispatcher->dispatch();
 
             return self::QUIT;
-        } catch (\Throwable $e) {
+        } catch (Throwable $e) {
+            var_dump($e);
             return self::DONE;
         }
     }

@@ -9,10 +9,24 @@
 namespace App\Library\Listener\Adapter;
 
 use App\Library\Listener\AbstractListener;
+use Phalcon\Events\Event;
+use Phalcon\Mvc\Application as MvcApplication;
+use Phalcon\Mvc\Dispatcher as MvcDispatcher;
 
 
 /**
  * Class Application
  * @package App\Library\Listener\Adapter
  */
-class Application extends AbstractListener {}
+class Application extends AbstractListener {
+
+    /**
+     * @param Event $event
+     * @param MvcApplication $app
+     * @param MvcDispatcher $dispatcher
+     */
+    public function beforeHandleRequest(Event $event, MvcApplication $app, MvcDispatcher $dispatcher) {
+        // @TODO inject request
+    }
+
+}

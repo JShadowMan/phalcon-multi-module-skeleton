@@ -21,13 +21,6 @@ use Phalcon\DiInterface;
 abstract class AbstractModule implements ModuleInterface {
 
     /**
-     * Paths of configure file
-     *
-     * @var string
-     */
-    protected $config_path;
-
-    /**
      * The name of the module-config service
      *
      * @var string
@@ -68,17 +61,31 @@ abstract class AbstractModule implements ModuleInterface {
     }
 
     /**
+     * Returns the name of the current module
+     *
+     * @return string
+     */
+    abstract protected function moduleName(): string;
+
+    /**
+     * Returns the path of module configure dir
+     *
+     * @return string
+     */
+    abstract protected function configDirPath(): string;
+
+    /**
      * Setup the configure of current module
      *
      * @param DiInterface $di
      */
     private function setupModuleConfig(DiInterface $di): void {
-        if (!empty($this->config_path) && !empty($this->config_service)) {
+        if (!empty($this->configDirPath()) && !empty($this->config_service)) {
             $self = $this; $configs = $this->configModules();
             $di->setShared($this->config_service, function() use ($self, $configs) {
                 $config_name = str_replace('\\', '_', strtolower(get_class($self)));
                 return (new Factory($config_name, function(string $path) use ($self) {
-                    return rtrim($self->config_path, '/\\') . ($path ? "/{$path}" : '');
+                    return rtrim($self->configDirPath(), '/\\') . ($path ? "/{$path}" : '');
                 }))->load(array_merge(['config'], $configs));
             });
         } else {
@@ -93,10 +100,11 @@ abstract class AbstractModule implements ModuleInterface {
      */
     private function setupDispatcher(DiInterface $di): void {
         if (isset(container('moduleConfig')->module->dispatcher)) {
+            /* @var $config Config */
             if ($config = container('moduleConfig')->module->dispatcher) {
-                $di->setShared('dispatcher', function() use ($config) {
-                    /* @var $config Config */
-                    return container('dispatcherTemplate', $config->toArray());
+                $module = $this->moduleName();
+                $di->setShared('dispatcher', function() use ($module, $config) {
+                    return container('dispatcherTemplate', $module, $config->toArray());
                 });
             }
         }

@@ -22,6 +22,7 @@ return [
     App\Provider\Timezone\ServiceProvider::class,
     App\Provider\Translator\ServiceProvider::class,
     App\Provider\UrlResolver\ServiceProvider::class,
+    App\Provider\VersionFeature\ServiceProvider::class,
     App\Provider\ViewCache\ServiceProvider::class,
     App\Provider\Volt\ServiceProvider::class,
 

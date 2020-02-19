@@ -8,10 +8,9 @@
  */
 namespace App\Provider\DispatcherTemplate;
 
+use App\Library\Feature\Version;
 use App\Library\Listener\Adapter\Dispatcher as DispatcherListener;
-use App\Library\Mvc\Controller\Utils\Feature;
 use App\Provider\AbstractServiceProvider;
-use Phalcon\Mvc\Dispatcher as MvcDispatcher;
 
 
 /**
@@ -31,13 +30,15 @@ class ServiceProvider extends AbstractServiceProvider {
      * @inheritDoc
      */
     public function register() {
-        $this->di->set($this->service_name, function(array $config) {
-            $dispatcher = new MvcDispatcher();
+        $this->di->set($this->service_name, function(string $module, array $config) {
+            $dispatcher = new Dispatcher();
             $dispatcher->setEventsManager(container('eventsManager'));
             container('eventsManager')->attach('dispatch', new DispatcherListener());
 
             if (!empty($config['controllerNamespace'])) {
-                $dispatcher->setDefaultNamespace(Feature::versionOf($config['controllerNamespace']));
+                /* @var Version $version */
+                $version = container('versionFeature');
+                $dispatcher->setDefaultNamespace($version->namespaceOf($module, $config['controllerNamespace']));
             }
 
             return $dispatcher;

@@ -20,13 +20,6 @@ use Phalcon\Loader;
 class Module extends AbstractModule {
 
     /**
-     * Paths of configure file
-     *
-     * @var string
-     */
-    protected $config_path = __DIR__ . '/config';
-
-    /**
      * Registers an autoloader related to the module
      *
      * @param DiInterface $di
@@ -39,6 +32,22 @@ class Module extends AbstractModule {
             'App\Skeleton\Model' => __DIR__ . DIRECTORY_SEPARATOR . 'model',
             'App\Skeleton\Provider' => __DIR__ . DIRECTORY_SEPARATOR . 'provider'
         ])->register();
+    }
+
+    /**
+     * @inheritDoc
+     * @return string
+     */
+    protected function moduleName(): string {
+        return 'skeleton';
+    }
+
+    /**
+     * @inheritDoc
+     * @return string
+     */
+    protected function configDirPath(): string {
+        return __DIR__ . '/config';
     }
 
     /**
