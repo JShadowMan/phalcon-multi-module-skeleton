@@ -29,4 +29,7 @@ return [
     /* template services */
     App\Provider\DispatcherTemplate\ServiceProvider::class,
     App\Provider\ViewTemplate\ServiceProvider::class,
+
+    /* default services */
+    App\Provider\ViewDefault\ServiceProvider::class,
 ];
