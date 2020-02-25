@@ -14,6 +14,7 @@ return [
     ],
 
     'error' => [
+        'module'        => 'skeleton',
         'controller'    => 'error',
         'action'        => 'serverInternalError'
     ],

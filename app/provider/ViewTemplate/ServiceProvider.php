@@ -9,8 +9,8 @@
 namespace App\Provider\ViewTemplate;
 
 use App\Library\Listener\Adapter\View as ViewListener;
+use App\Library\Mvc\View\View;
 use App\Provider\AbstractServiceProvider;
-use Phalcon\Mvc\View as MvcView;
 
 
 /**
@@ -31,7 +31,7 @@ class ServiceProvider extends AbstractServiceProvider {
      */
     public function register() {
         $this->di->set($this->service_name, function(array $config) {
-            $view = new MvcView();
+            $view = new View();
             $view->registerEngines([
                 '.volt' => container('volt', $view, $this)
             ]);
@@ -39,11 +39,7 @@ class ServiceProvider extends AbstractServiceProvider {
             $view->setEventsManager(container('eventsManager'));
             container('eventsManager')->attach('view', new ViewListener());
 
-            if (!empty($config['viewDir'])) {
-                $view->setViewsDir($config['viewDir']);
-            }
-
-            return $view;
+            return $view->loadConfig($config);
         });
     }
 

@@ -10,7 +10,7 @@ namespace App\Library\Exception;
 
 
 /**
- * Interface HereException
+ * Interface AppExceptionInterface
  * @package App\Library\Exception
  */
 interface AppExceptionInterface {}

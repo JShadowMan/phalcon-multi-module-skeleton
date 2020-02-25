@@ -46,6 +46,39 @@ class Application extends MvcApplication {
     }
 
     /**
+     * Startup a module
+     *
+     * @param string $module
+     * @return bool
+     */
+    public function startModule(string $module): bool {
+        if (container('eventsManager')->fire('application:beforeStartModule', $this, $module) === false) {
+            return false;
+        }
+
+        if ($config = $this->getModule($module)) {
+            if (is_array($config)) {
+                if (isset($config['className'])) {
+                    if (!class_exists($config['className'])) {
+                        /** @noinspection PhpIncludeInspection */
+                        require_once $config['path'];
+                    }
+
+                    $instance = $this->di->get($config['className']);
+                    if (method_exists($instance, 'setStartWithError')) {
+                        $instance->setStartWithError();
+                    }
+
+                    $instance->registerAutoloaders($this->di);
+                    $instance->registerServices($this->di);
+                    container('eventsManager')->fire('application:afterStartModule', $this, $instance);
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
      * Setups the multi modules supported, and register all modules
      * to the application
      */

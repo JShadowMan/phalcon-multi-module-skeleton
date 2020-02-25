@@ -8,10 +8,9 @@
  */
 namespace App\Library\Exception\Handler;
 
+use App\Provider\Application\Application;
 use Exception;
-use Phalcon\Http\Response;
 use Phalcon\Mvc\Dispatcher;
-use Phalcon\Mvc\View;
 use Throwable;
 use Whoops\Handler\Handler;
 
@@ -33,14 +32,25 @@ final class ErrorPageHandler extends Handler {
             /* @var Dispatcher $dispatcher */
             $dispatcher = container('dispatcher');
 
+            if ($error->module) {
+                /* @var $application Application */
+                $application = container('app');
+                $application->startModule($error->module);
+                /* @var $new_dispatcher Dispatcher */
+                if ($new_dispatcher = container('dispatcher')) {
+                    $dispatcher->setModuleName($new_dispatcher->getModuleName());
+                    $dispatcher->setNamespaceName($new_dispatcher->getNamespaceName());
+                    $dispatcher->setDefaultNamespace($new_dispatcher->getDefaultNamespace());
+                }
+            }
+            $dispatcher->setFinish(false);
             $dispatcher->setControllerName($error->controller);
             $dispatcher->setActionName($error->action);
-            $dispatcher->dispatch();
 
-            return self::QUIT;
-        } catch (Throwable $e) {
-            var_dump($e);
             return self::DONE;
+        } catch (Throwable $e) {
+            container('logger', 'sys')->error($e->getMessage());
+            return self::QUIT;
         }
     }
 

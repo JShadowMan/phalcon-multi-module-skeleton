@@ -31,5 +31,6 @@ return [
     App\Provider\ViewTemplate\ServiceProvider::class,
 
     /* default services */
+    App\Provider\DispatcherDefault\ServiceProvider::class,
     App\Provider\ViewDefault\ServiceProvider::class,
 ];

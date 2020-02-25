@@ -8,7 +8,6 @@
  */
 namespace App\Provider\DispatcherTemplate;
 
-use App\Library\Feature\Version;
 use App\Library\Listener\Adapter\Dispatcher as DispatcherListener;
 use App\Provider\AbstractServiceProvider;
 
@@ -35,13 +34,7 @@ class ServiceProvider extends AbstractServiceProvider {
             $dispatcher->setEventsManager(container('eventsManager'));
             container('eventsManager')->attach('dispatch', new DispatcherListener());
 
-            if (!empty($config['controllerNamespace'])) {
-                /* @var Version $version */
-                $version = container('versionFeature');
-                $dispatcher->setDefaultNamespace($version->namespaceOf($module, $config['controllerNamespace']));
-            }
-
-            return $dispatcher;
+            return $dispatcher->loadConfig($config, $module);
         });
     }
 

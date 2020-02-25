@@ -6,15 +6,14 @@
  * @license   MIT License
  * @link      https://github.com/lsalio/phalcon-skeleton
  */
-namespace App\Provider\ViewDefault;
+namespace App\Provider\DispatcherDefault;
 
 use App\Provider\AbstractServiceProvider;
-use Phalcon\Mvc\View;
 
 
 /**
  * Class ServiceProvider
- * @package App\Provider\ViewDefault
+ * @package App\Provider\DispatcherDefault
  */
 class ServiceProvider extends AbstractServiceProvider {
 
@@ -23,17 +22,14 @@ class ServiceProvider extends AbstractServiceProvider {
      *
      * @var string
      */
-    protected $service_name = 'view';
+    protected $service_name = 'dispatcher';
 
     /**
      * @inheritDoc
      */
     public function register() {
         $this->di->setShared($this->service_name, function() {
-            /* @var $view View */
-            $view = container('viewTemplate', /* empty config */[]);
-            $view->setContent('');
-            return $view;
+            return container('dispatcherTemplate', /* module name */'', /* empty config */[]);
         });
     }
 

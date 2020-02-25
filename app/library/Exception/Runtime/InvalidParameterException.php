@@ -9,10 +9,11 @@
 namespace App\Library\Exception\Runtime;
 
 use App\Library\Exception\AppExceptionInterface;
+use Exception;
 
 
 /**
  * Class InvalidParameterException
  * @package App\Library\Exception\Runtime
  */
-class InvalidParameterException extends \Exception implements AppExceptionInterface {}
+class InvalidParameterException extends Exception implements AppExceptionInterface {}

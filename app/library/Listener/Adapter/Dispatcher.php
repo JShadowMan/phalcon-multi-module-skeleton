@@ -35,13 +35,25 @@ class Dispatcher extends AbstractListener {
         /* @var Version $version */
         $version = container('versionFeature');
         if ($version->isVersionHandlerException($exception)) {
-            if ($version->check($dispatcher->getModuleNameWithDefault())) {
-                $dispatcher->forward([
-                    'namespace' => $version->namespaceFallback($dispatcher->getDefaultNamespace())
-                ]);
-                return false;
-            }
+            do {
+                if ($version->getNumber() !== 1) {
+                    $config = container('config')->error;
+                    if ($dispatcher->getControllerName() !== $config->controller) {
+                        break;
+                    }
+                }
+
+                if ($version->check($dispatcher->getModuleNameWithDefault())) {
+                    $dispatcher->forward([
+                        'namespace' => $version->namespaceFallback($dispatcher->getDefaultNamespace())
+                    ]);
+                    return false;
+                }
+            } while (false);
         }
+
+        container('errorHandler')->handleException($exception);
+        return false;
     }
 
 }

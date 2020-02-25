@@ -21,7 +21,7 @@ use Phalcon\DiInterface;
 
 /**
  * Class Bootstrap
- * @package Here
+ * @package App
  */
 final class Bootstrap {
 

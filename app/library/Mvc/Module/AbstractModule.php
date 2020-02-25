@@ -28,6 +28,24 @@ abstract class AbstractModule implements ModuleInterface {
     protected $config_service = 'moduleConfig';
 
     /**
+     * Module started with error forward
+     *
+     * @var bool
+     */
+    protected $start_with_error = false;
+
+    /**
+     * Modify start-with-error status
+     *
+     * @param bool $status
+     * @return $this
+     */
+    public function setStartWithError(bool $status = true) {
+        $this->start_with_error = $status;
+        return $this;
+    }
+
+    /**
      * Registers services related to the module
      *
      * @param DiInterface $di
@@ -119,10 +137,14 @@ abstract class AbstractModule implements ModuleInterface {
         if (isset(container('moduleConfig')->module->view)) {
             if ($config = container('moduleConfig')->module->view) {
                 if ($config->uses === true) {
-                    $di->setShared('view', function() use ($config) {
-                        /* @var $config Config */
-                        return container('viewTemplate', $config->toArray());
-                    });
+                    /* @var $config Config */
+                    if ($this->start_with_error) {
+                        container('view')->loadConfig($config->toArray());
+                    } else {
+                        $di->setShared('view', function() use ($config) {
+                            return container('viewTemplate', $config->toArray());
+                        });
+                    }
                 } else {
                     // disabled view implicit
                     container('app')->useImplicitView(false);

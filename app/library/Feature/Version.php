@@ -74,7 +74,7 @@ class Version {
      * @return bool
      */
     public function check(?string $module = null, bool $default = false): bool {
-        if ($module === null) {
+        if (!$module) {
             return array_any($this->states);
         }
         return $this->states[$module] ?? $default;
