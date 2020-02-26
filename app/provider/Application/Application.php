@@ -8,7 +8,7 @@
  */
 namespace App\Provider\Application;
 
-use App\Library\Listener\Adapter\Application as ApplicationListener;
+use App\Library\Framework\Listener\Adapter\Application as ApplicationListener;
 use App\Library\Module\ModuleInterface;
 use App\Provider\Router\Router;
 use Phalcon\DiInterface;

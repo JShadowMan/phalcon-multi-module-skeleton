@@ -8,8 +8,8 @@
  */
 namespace App\Provider\ViewTemplate;
 
-use App\Library\Listener\Adapter\View as ViewListener;
-use App\Library\Mvc\View\Adapter\Html;
+use App\Library\Framework\Listener\Adapter\View as ViewListener;
+use App\Library\Framework\Mvc\View\Adapter\Html;
 use App\Provider\AbstractServiceProvider;
 
 

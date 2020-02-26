@@ -8,7 +8,7 @@
  */
 namespace App\Model;
 
-use App\Library\Mvc\Model\AbstractModel;
+use App\Library\Framework\Mvc\Model\AbstractModel;
 
 
 /**

@@ -8,8 +8,8 @@
  */
 namespace App\Provider\ErrorHandler;
 
-use App\Library\Exception\Handler\ErrorPageHandler;
-use App\Library\Exception\Handler\LoggerHandler;
+use App\Library\Framework\Exception\Handler\ErrorPageHandler;
+use App\Library\Framework\Exception\Handler\LoggerHandler;
 use App\Provider\AbstractServiceProvider;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;

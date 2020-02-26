@@ -31,7 +31,7 @@ class ServiceProvider extends AbstractServiceProvider {
     public function register() {
         $this->di->set($this->service_name, function() {
             return (new Loader())->registerFiles([
-                app_path('library/Xet/functions.php')
+                app_path('library/Framework/Xet/functions.php')
             ])->register();
         });
     }

@@ -8,7 +8,7 @@
  */
 namespace App\Provider\Config;
 
-use App\Library\Config\Factory;
+use App\Library\Framework\Config\Factory;
 use App\Provider\AbstractServiceProvider;
 
 

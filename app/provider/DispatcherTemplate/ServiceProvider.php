@@ -8,7 +8,7 @@
  */
 namespace App\Provider\DispatcherTemplate;
 
-use App\Library\Listener\Adapter\Dispatcher as DispatcherListener;
+use App\Library\Framework\Listener\Adapter\Dispatcher as DispatcherListener;
 use App\Provider\AbstractServiceProvider;
 
 

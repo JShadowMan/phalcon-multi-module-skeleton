@@ -8,8 +8,8 @@
  */
 namespace App\Provider\ViewJson;
 
-use App\Library\Listener\Adapter\View as ViewListener;
-use App\Library\Mvc\View\Adapter\Json;
+use App\Library\Framework\Listener\Adapter\View as ViewListener;
+use App\Library\Framework\Mvc\View\Adapter\Json;
 use App\Provider\AbstractServiceProvider;
 
 

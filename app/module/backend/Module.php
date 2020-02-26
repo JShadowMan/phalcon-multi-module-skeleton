@@ -8,7 +8,7 @@
  */
 namespace App\Backend;
 
-use App\Library\Module\AbstractModule;
+use App\Library\Framework\Module\AbstractModule;
 use Phalcon\DiInterface;
 use Phalcon\Loader;
 

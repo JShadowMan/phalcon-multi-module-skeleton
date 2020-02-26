@@ -8,7 +8,7 @@
  */
 namespace App\Provider\DispatcherTemplate;
 
-use App\Library\Feature\Version;
+use App\Library\Framework\Feature\Version;
 use Phalcon\Mvc\Dispatcher as MvcDispatcher;
 
 

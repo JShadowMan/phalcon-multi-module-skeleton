@@ -8,7 +8,7 @@
  */
 namespace App\Provider\Environment;
 
-use App\Library\Bootstrap;
+use App\Library\Framework\Bootstrap;
 use App\Provider\AbstractServiceProvider;
 
 

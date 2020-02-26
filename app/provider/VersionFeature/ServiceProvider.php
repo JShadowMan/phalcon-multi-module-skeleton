@@ -8,7 +8,7 @@
  */
 namespace App\Provider\VersionFeature;
 
-use App\Library\Feature\Version;
+use App\Library\Framework\Feature\Version;
 use App\Provider\AbstractServiceProvider;
 
 

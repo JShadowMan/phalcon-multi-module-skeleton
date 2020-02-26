@@ -8,7 +8,7 @@
  */
 namespace App\Provider\Database;
 
-use App\Library\Listener\Adapter\Database as DatabaseListener;
+use App\Library\Framework\Listener\Adapter\Database as DatabaseListener;
 use App\Provider\AbstractServiceProvider;
 use Phalcon\Config;
 use Phalcon\Db\Adapter;

@@ -8,7 +8,7 @@
  */
 namespace App\Provider\Field\Store\Adapter;
 
-use App\Library\Exception\Mvc\ModelSaveException;
+use App\Library\Framework\Exception\Mvc\ModelSaveException;
 use App\Provider\Field\Store\AbstractStore;
 use App\Provider\Field\Store\StoreInterface;
 use App\Model\Field;

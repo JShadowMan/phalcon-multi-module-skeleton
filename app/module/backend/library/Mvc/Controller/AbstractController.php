@@ -8,7 +8,7 @@
  */
 namespace App\Backend\Library\Mvc\Controller;
 
-use App\Library\Mvc\Controller\AbstractController as GlobalAbstractController;
+use App\Library\Framework\Mvc\Controller\AbstractController as GlobalAbstractController;
 use App\Provider\ResponseJson\Mixin;
 
 
