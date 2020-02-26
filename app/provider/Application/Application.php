@@ -9,6 +9,7 @@
 namespace App\Provider\Application;
 
 use App\Library\Listener\Adapter\Application as ApplicationListener;
+use App\Library\Module\ModuleInterface;
 use App\Provider\Router\Router;
 use Phalcon\DiInterface;
 use Phalcon\Http\ResponseInterface;
@@ -64,6 +65,7 @@ class Application extends MvcApplication {
                         require_once $config['path'];
                     }
 
+                    /* @var ModuleInterface $instance */
                     $instance = $this->di->get($config['className']);
                     if (method_exists($instance, 'setStartWithError')) {
                         $instance->setStartWithError();
@@ -72,6 +74,7 @@ class Application extends MvcApplication {
                     $instance->registerAutoloaders($this->di);
                     $instance->registerServices($this->di);
                     container('eventsManager')->fire('application:afterStartModule', $this, $instance);
+                    return true;
                 }
             }
         }

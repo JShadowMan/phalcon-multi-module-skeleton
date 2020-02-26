@@ -6,7 +6,7 @@
  * @license   MIT License
  * @link      https://github.com/lsalio/phalcon-skeleton
  */
-namespace App\Library\Mvc\Module;
+namespace App\Library\Module;
 
 use App\Library\Config\Factory;
 use App\Provider\ServiceProviderInstaller;
@@ -136,7 +136,7 @@ abstract class AbstractModule implements ModuleInterface {
     private function setupView(DiInterface $di): void {
         if (isset(container('moduleConfig')->module->view)) {
             if ($config = container('moduleConfig')->module->view) {
-                if ($config->uses === true) {
+                if ($config->uses === true || $config->uses === 'html') {
                     /* @var $config Config */
                     if ($this->start_with_error) {
                         container('view')->loadConfig($config->toArray());
@@ -145,6 +145,11 @@ abstract class AbstractModule implements ModuleInterface {
                             return container('viewTemplate', $config->toArray());
                         });
                     }
+                } else if ($config->uses === 'json') {
+                    /* @var $config Config */
+                    $di->setShared('view', function() use ($config) {
+                        return container('viewJson', $config->toArray());
+                    });
                 } else {
                     // disabled view implicit
                     container('app')->useImplicitView(false);

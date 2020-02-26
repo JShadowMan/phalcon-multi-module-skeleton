@@ -24,6 +24,7 @@ return [
     App\Provider\UrlResolver\ServiceProvider::class,
     App\Provider\VersionFeature\ServiceProvider::class,
     App\Provider\ViewCache\ServiceProvider::class,
+    App\Provider\ViewJson\ServiceProvider::class,
     App\Provider\Volt\ServiceProvider::class,
 
     /* template services */
@@ -33,4 +34,7 @@ return [
     /* default services */
     App\Provider\DispatcherDefault\ServiceProvider::class,
     App\Provider\ViewDefault\ServiceProvider::class,
+
+    /* response formatter */
+    App\Provider\ResponseJson\ServiceProvider::class,
 ];

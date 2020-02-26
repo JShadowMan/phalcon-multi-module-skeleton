@@ -48,10 +48,10 @@ final class Router extends MvcRouter {
                 $module = $paths['module'];
             }
 
-            /* @var Version $feature */
-            $feature = container('versionFeature');
-            if ($feature->check($module)) {
-                $feature->setNumber((int)$matches['version']);
+            /* @var Version $version */
+            $version = container('versionFeature');
+            if ($version->strictCheck($module)) {
+                $version->setNumber((int)$matches['version']);
                 return $trimmed_uri;
             }
         }

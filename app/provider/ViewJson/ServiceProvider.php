@@ -6,35 +6,30 @@
  * @license   MIT License
  * @link      https://github.com/lsalio/phalcon-skeleton
  */
-namespace App\Provider\ViewTemplate;
+namespace App\Provider\ViewJson;
 
 use App\Library\Listener\Adapter\View as ViewListener;
-use App\Library\Mvc\View\Adapter\Html;
+use App\Library\Mvc\View\Adapter\Json;
 use App\Provider\AbstractServiceProvider;
 
 
 /**
  * Class ServiceProvider
- * @package App\Provider\ViewTemplate
+ * @package App\Provider\ViewJson
  */
 class ServiceProvider extends AbstractServiceProvider {
 
     /**
-     * The name of the service
-     *
      * @var string
      */
-    protected $service_name = 'viewTemplate';
+    protected $service_name = 'viewJson';
 
     /**
      * @inheritDoc
      */
     public function register() {
         $this->di->set($this->service_name, function(array $config) {
-            $view = new Html();
-            $view->registerEngines([
-                '.volt' => container('volt', $view, $this)
-            ]);
+            $view = new Json();
 
             $view->setEventsManager(container('eventsManager'));
             container('eventsManager')->attach('view', new ViewListener());

@@ -8,7 +8,7 @@
  */
 namespace App\Skeleton;
 
-use App\Library\Mvc\Module\AbstractModule;
+use App\Library\Module\AbstractModule;
 use Phalcon\DiInterface;
 use Phalcon\Loader;
 

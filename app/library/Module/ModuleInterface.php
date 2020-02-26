@@ -6,7 +6,7 @@
  * @license   MIT License
  * @link      https://github.com/lsalio/phalcon-skeleton
  */
-namespace App\Library\Mvc\Module;
+namespace App\Library\Module;
 
 use Phalcon\Mvc\ModuleDefinitionInterface;
 

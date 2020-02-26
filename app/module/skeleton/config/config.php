@@ -12,8 +12,8 @@ return [
             'controllerNamespace' => 'App\Skeleton\Controller'
         ],
         'view' => [
-            'uses' => true,
-            'viewDir' => module_path('skeleton/view')
-        ]
+            'uses' => true, // html
+            'viewDir' => module_path('skeleton/view'),
+        ],
     ],
 ];

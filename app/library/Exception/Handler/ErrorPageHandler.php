@@ -38,9 +38,11 @@ final class ErrorPageHandler extends Handler {
                 $application->startModule($error->module);
                 /* @var $new_dispatcher Dispatcher */
                 if ($new_dispatcher = container('dispatcher')) {
-                    $dispatcher->setModuleName($new_dispatcher->getModuleName());
-                    $dispatcher->setNamespaceName($new_dispatcher->getNamespaceName());
-                    $dispatcher->setDefaultNamespace($new_dispatcher->getDefaultNamespace());
+                    if ($new_dispatcher !== $dispatcher) {
+                        $dispatcher->setModuleName($new_dispatcher->getModuleName());
+                        $dispatcher->setNamespaceName($new_dispatcher->getNamespaceName());
+                        $dispatcher->setDefaultNamespace($new_dispatcher->getDefaultNamespace());
+                    }
                 }
             }
             $dispatcher->setFinish(false);

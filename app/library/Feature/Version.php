@@ -81,6 +81,18 @@ class Version {
     }
 
     /**
+     * Returns the version-feature is enabled for module by strict, default by
+     * module not found in modules config
+     *
+     * @param string|null $module
+     * @param bool $default
+     * @return bool
+     */
+    public function strictCheck(string $module = null, bool $default = false): bool {
+        return $this->states[$module] ?? $default;
+    }
+
+    /**
      * Sets the number of version
      *
      * @param int $version
