@@ -9,7 +9,7 @@
 namespace App\Provider\Application;
 
 use App\Library\Framework\Listener\Adapter\Application as ApplicationListener;
-use App\Library\Module\ModuleInterface;
+use App\Library\Framework\Module\ModuleInterface;
 use App\Provider\Router\Router;
 use Phalcon\DiInterface;
 use Phalcon\Http\ResponseInterface;

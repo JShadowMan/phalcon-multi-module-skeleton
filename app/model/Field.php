@@ -15,7 +15,7 @@ use App\Library\Framework\Mvc\Model\AbstractModel;
  * Class Field
  * @package App\Model
  */
-final class Field extends AbstractModel {
+class Field extends AbstractModel {
 
     /**
      *
@@ -47,7 +47,7 @@ final class Field extends AbstractModel {
      * @param string $field_key
      * @return $this
      */
-    final public function setFieldKey(string $field_key) {
+    public function setFieldKey(string $field_key) {
         $this->field_key = $field_key;
         return $this;
     }
@@ -59,7 +59,7 @@ final class Field extends AbstractModel {
      * @param string $value
      * @return $this
      */
-    final public function setStringField(string $key, string $value) {
+    public function setStringField(string $key, string $value) {
         $this->field_key = $key;
         $this->field_value_type = self::FIELD_VALUE_TYPE_STRING;
         $this->field_value = $value;
@@ -73,7 +73,7 @@ final class Field extends AbstractModel {
      * @param int $value
      * @return $this
      */
-    final public function setIntegerField(string $key, int $value) {
+    public function setIntegerField(string $key, int $value) {
         $this->field_key = $key;
         $this->field_value_type = self::FIELD_VALUE_TYPE_INTEGER;
         $this->field_value = $value;
@@ -87,7 +87,7 @@ final class Field extends AbstractModel {
      * @param float $value
      * @return $this
      */
-    final public function setFloatField(string $key, float $value) {
+    public function setFloatField(string $key, float $value) {
         $this->field_key = $key;
         $this->field_value_type = self::FIELD_VALUE_TYPE_FLOAT;
         $this->field_value = strval($value);
@@ -101,7 +101,7 @@ final class Field extends AbstractModel {
      * @param bool $value
      * @return $this
      */
-    final public function setBooleanField(string $key, bool $value) {
+    public function setBooleanField(string $key, bool $value) {
         $this->field_key = $key;
         $this->field_value_type = self::FIELD_VALUE_TYPE_BOOLEAN;
         $this->field_value = $value ? 'true' : 'false';
@@ -115,7 +115,7 @@ final class Field extends AbstractModel {
      * @param $value
      * @return $this
      */
-    final public function setSerializedField(string $key, $value) {
+    public function setSerializedField(string $key, $value) {
         $this->field_key = $key;
         $this->field_value_type = self::FIELD_VALUE_TPE_SERIALIZED;
         $this->field_value = serialize($value);
@@ -127,7 +127,7 @@ final class Field extends AbstractModel {
      *
      * @return integer
      */
-    final public function getFieldId(): int {
+    public function getFieldId(): int {
         return (int)$this->field_id;
     }
 
@@ -136,7 +136,7 @@ final class Field extends AbstractModel {
      *
      * @return string
      */
-    final public function getFieldKey(): ?string {
+    public function getFieldKey(): ?string {
         return $this->field_key;
     }
 
@@ -145,7 +145,7 @@ final class Field extends AbstractModel {
      *
      * @return string
      */
-    final public function getFieldValue(): ?string {
+    public function getFieldValue(): ?string {
         return $this->field_value;
     }
 
@@ -154,7 +154,7 @@ final class Field extends AbstractModel {
      *
      * @return bool
      */
-    final public function isStringField(): bool {
+    public function isStringField(): bool {
         return is_null($this->field_value_type) ||
             $this->field_value_type === self::FIELD_VALUE_TYPE_STRING;
     }
@@ -164,7 +164,7 @@ final class Field extends AbstractModel {
      *
      * @return bool
      */
-    final public function isIntegerField(): bool {
+    public function isIntegerField(): bool {
         return $this->field_value_type === self::FIELD_VALUE_TYPE_INTEGER;
     }
 
@@ -173,7 +173,7 @@ final class Field extends AbstractModel {
      *
      * @return bool
      */
-    final public function isFloatField(): bool {
+    public function isFloatField(): bool {
         return $this->field_value_type === self::FIELD_VALUE_TYPE_FLOAT;
     }
 
@@ -182,7 +182,7 @@ final class Field extends AbstractModel {
      *
      * @return bool
      */
-    final public function isBooleanField(): bool {
+    public function isBooleanField(): bool {
         return $this->field_value_type === self::FIELD_VALUE_TYPE_BOOLEAN;
     }
 
@@ -191,7 +191,7 @@ final class Field extends AbstractModel {
      *
      * @return bool
      */
-    final public function isSerializedField(): bool {
+    public function isSerializedField(): bool {
         return $this->field_value_type === self::FIELD_VALUE_TPE_SERIALIZED;
     }
 
@@ -200,7 +200,7 @@ final class Field extends AbstractModel {
      *
      * @return mixed
      */
-    final public function getRealFieldValue() {
+    public function getRealFieldValue() {
         switch ($this->field_value_type) {
             case self::FIELD_VALUE_TYPE_INTEGER:
                 return (int)$this->field_value;
@@ -219,7 +219,7 @@ final class Field extends AbstractModel {
     /**
      * Initialize method for model.
      */
-    final public function initialize() {
+    public function initialize() {
         $this->setSource('field');
     }
 
@@ -228,7 +228,7 @@ final class Field extends AbstractModel {
      *
      * @return string
      */
-    final public function getSource() {
+    public function getSource() {
         return 'field';
     }
 
@@ -239,7 +239,7 @@ final class Field extends AbstractModel {
      * @param string $key
      * @return Field|null
      */
-    final public static function findByKey(string $key): ?self {
+    public static function findByKey(string $key): ?self {
         return static::findFirst([
             'conditions' => 'field_key = ?0',
             'bind' => [$key]
@@ -252,7 +252,7 @@ final class Field extends AbstractModel {
      * @param string $key
      * @return Field
      */
-    final public static function factory(string $key): self {
+    public static function factory(string $key): self {
         $field = new static();
         $field->setFieldKey($key);
 
