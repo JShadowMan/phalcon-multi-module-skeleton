@@ -7,4 +7,5 @@ A phalcon template for multi module
 - [x] Support versionFeature on single module(with forward?)
 - [ ] Maybe support versionFeature on view?
 - [x] Incorrect route and error message
-- [ ] Json view
+- [x] Json view
+- [ ] Correct error handler
