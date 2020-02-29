@@ -22,7 +22,7 @@ final class Router extends MvcRouter {
      * Router constructor.
      * @param bool $defaultRoutes
      */
-    public function __construct($defaultRoutes = true) {
+    public function __construct($defaultRoutes = false) {
         parent::__construct($defaultRoutes);
 
         $this->add('/:module/:controller/:action/:params', [
@@ -30,6 +30,13 @@ final class Router extends MvcRouter {
             'controller' => 2,
             'action' => 3,
             'params' => 4
+        ]);
+        $this->add('/:module/:controller', [
+            'module' => 1,
+            'controller' => 2,
+        ]);
+        $this->add('/:module', [
+            'module' => 1
         ]);
     }
 
@@ -44,7 +51,7 @@ final class Router extends MvcRouter {
         if (preg_match('/^\/v(?<version>\d+)(?<uri>.*)/', $uri, $matches)) {
             $trimmed_uri = $matches['uri'] ?: '/';
             $module = container('app')->getDefaultModule();
-            if (preg_match('/\/(?<module>\w+)\/.*/', $trimmed_uri, $paths)) {
+            if (preg_match('/\/(?<module>\w+)\/?.*/', $trimmed_uri, $paths)) {
                 $module = $paths['module'];
             }
 
