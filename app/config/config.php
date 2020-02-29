@@ -14,8 +14,9 @@ return [
     ],
 
     'error' => [
-        'module'        => 'skeleton',
         'controller'    => 'error',
-        'action'        => 'serverInternalError'
+        'action'        => 'serverInternalError',
+        'status_code'   => '404',
+        'error_message' => ''
     ],
 ];

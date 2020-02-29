@@ -8,7 +8,6 @@
  */
 namespace App\Provider\ErrorHandler;
 
-use App\Library\Framework\Exception\Handler\ErrorPageHandler;
 use App\Library\Framework\Exception\Handler\LoggerHandler;
 use App\Provider\AbstractServiceProvider;
 use Whoops\Handler\PrettyPageHandler;
@@ -34,7 +33,6 @@ final class ServiceProvider extends AbstractServiceProvider {
     final public function register() {
         $this->di->setShared("{$this->service_name}.loggerHandler", LoggerHandler::class);
         $this->di->setShared("{$this->service_name}.prettyPageHandler", PrettyPageHandler::class);
-        $this->di->setShared("{$this->service_name}.errorPageHandler", ErrorPageHandler::class);
 
         $service_name = $this->service_name;
         $this->di->setShared($this->service_name, function() use ($service_name) {
@@ -43,8 +41,6 @@ final class ServiceProvider extends AbstractServiceProvider {
 
             if (env('APP_DEBUG', false)) {
                 $run->appendHandler(container("{$service_name}.prettyPageHandler"));
-            } else {
-                $run->appendHandler(container("{$service_name}.errorPageHandler"));
             }
             return $run;
         });

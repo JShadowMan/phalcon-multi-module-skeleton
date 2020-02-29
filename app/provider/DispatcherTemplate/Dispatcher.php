@@ -44,13 +44,4 @@ class Dispatcher extends MvcDispatcher {
         return $this->getModuleName() ?: container('app')->getDefaultModule();
     }
 
-    /**
-     * @param bool $finish
-     * @return Dispatcher
-     */
-    public function setFinish(bool $finish) {
-        $this->_finished = $finish;
-        return $this;
-    }
-
 }

@@ -52,8 +52,36 @@ class Dispatcher extends AbstractListener {
             } while (false);
         }
 
-        container('errorHandler')->handleException($exception);
+        $this->doErrorForward($dispatcher, $exception);
+        // Returns false to dispatch loop again
         return false;
+    }
+
+    /**
+     * Detect a corrected error forward and dispatch it
+     *
+     * @param MvcDispatcher $dispatcher
+     * @param Throwable $exception
+     */
+    protected function doErrorForward(MvcDispatcher $dispatcher, Throwable $exception) {
+        $error = container('config')->error;
+
+        try {
+            if ($dispatcher->getNamespaceName()) {
+                return $dispatcher->forward([
+                    'controller' => $error->controller,
+                    'action' => $error->action,
+                    'params' => [$exception]
+                ]);
+            }
+        } catch (Throwable $e) {
+            container('logger', 'sys')->error($e->getMessage());
+        }
+
+        if ($error->status_code) {
+            container('response')->setStatusCode($error->status_code);
+        }
+        return $dispatcher->setReturnedValue($error->error_message);
     }
 
 }

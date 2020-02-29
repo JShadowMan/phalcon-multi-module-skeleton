@@ -55,8 +55,8 @@ final class Bootstrap {
         $this->di->setShared('bootstrap', $this);
 
         $this->setupEnvironment();
-        $this->setupServiceProvider(new EventsManagerServiceProvider($this->di));
         $this->setupServiceProvider(new ErrorHandlerServiceProvider($this->di));
+        $this->setupServiceProvider(new EventsManagerServiceProvider($this->di));
 
         /** @noinspection PhpIncludeInspection */
         $providers = include config_path('providers.php');

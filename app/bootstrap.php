@@ -148,8 +148,10 @@ if (!function_exists('env')) {
 
         switch ($value) {
             case 'true':
+            case 'yes':
                 return true;
             case 'false':
+            case 'no':
                 return false;
             case 'null':
                 return null;
