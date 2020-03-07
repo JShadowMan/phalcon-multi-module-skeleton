@@ -6,19 +6,17 @@
  * @license   MIT License
  * @link      https://github.com/lsalio/phalcon-skeleton
  */
-namespace App\Skeleton\Controller\V2;
+namespace App\Frontend\Controller;
 
-use App\Skeleton\Library\Mvc\Controller\AbstractController;
+use App\Frontend\Library\Mvc\Controller\AbstractController;
 
 
 /**
  * Class IndexController
- * @package App\Skeleton\Controller\V2
+ * @package App\Frontend\Controller
  */
 class IndexController extends AbstractController {
 
-    public function indexAction() {
-        return 'v2 skeleton';
-    }
+    public function indexAction() {}
 
 }

@@ -9,11 +9,11 @@
 return [
     'module' => [
         'dispatcher' => [
-            'controllerNamespace' => 'App\Skeleton\Controller'
+            'controllerNamespace' => 'App\Frontend\Controller'
         ],
         'view' => [
-            'uses' => true, // html
-            'viewDir' => module_path('skeleton/view'),
+            'uses' => true, // html by default
+            'viewDir' => module_path('frontend/view'),
         ],
     ],
 ];

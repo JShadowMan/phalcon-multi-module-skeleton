@@ -6,13 +6,13 @@
  * @license   MIT License
  * @link      https://github.com/lsalio/phalcon-skeleton
  */
-namespace App\Skeleton\Library\Mvc\Controller;
+namespace App\Frontend\Library\Mvc\Controller;
 
 use App\Library\Framework\Mvc\Controller\AbstractController as GlobalAbstractController;
 
 
 /**
  * Class AbstractController
- * @package App\Skeleton\Library\Mvc\Controller
+ * @package App\Frontend\Library\Mvc\Controller
  */
 abstract class AbstractController extends GlobalAbstractController {}

@@ -6,14 +6,14 @@
  * @license   MIT License
  * @link      https://github.com/lsalio/phalcon-skeleton
  */
-namespace App\Skeleton\Controller;
+namespace App\Frontend\Controller;
 
-use App\Skeleton\Library\Mvc\Controller\AbstractController;
+use App\Frontend\Library\Mvc\Controller\AbstractController;
 
 
 /**
  * Class ErrorController
- * @package App\Skeleton\Controller
+ * @package App\Frontend\Controller
  */
 class ErrorController extends AbstractController {
 

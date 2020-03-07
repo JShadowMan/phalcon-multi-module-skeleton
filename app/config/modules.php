@@ -7,7 +7,7 @@
  * @link      https://github.com/lsalio/phalcon-skeleton
  */
 use App\Backend\Module as BackendModule;
-use App\Skeleton\Module as SkeletonModule;
+use App\Frontend\Module as FrontendModule;
 
 
 return [
@@ -19,11 +19,11 @@ return [
                 'versionFeature' => true,
             ]
         ],
-        'skeleton' => [
-            'path' => module_path('skeleton/Module.php'),
-            'className' => SkeletonModule::class,
+        'frontend' => [
+            'path' => module_path('frontend/Module.php'),
+            'className' => FrontendModule::class,
             'metadata' => [
-                'versionFeature' => true,
+                'versionFeature' => false,
             ]
         ],
     ],
