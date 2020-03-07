@@ -17,8 +17,6 @@ use App\Frontend\Library\Mvc\Controller\AbstractController;
  */
 class ErrorController extends AbstractController {
 
-    public function serverInternalErrorAction() {
-        $this->view->render($this->dispatcher->getControllerName(), $this->dispatcher->getActionName());
-    }
+    public function serverInternalErrorAction() {}
 
 }
