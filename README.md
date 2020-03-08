@@ -11,3 +11,4 @@ A phalcon template for multi module
 - [x] Correct default module forward
 - [ ] Distribute RESTful automatically
 - [ ] Deep routing
+- [ ] Tool to create empty module
