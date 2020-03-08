@@ -47,6 +47,9 @@ class Dispatcher extends AbstractListener {
                     $dispatcher->forward([
                         'namespace' => $version->namespaceFallback($dispatcher->getDefaultNamespace())
                     ]);
+
+                    // automatically reset status code when version-feature forward
+                    container('response')->setStatusCode(200);
                     return false;
                 }
             } while (false);

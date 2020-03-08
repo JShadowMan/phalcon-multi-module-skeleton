@@ -9,8 +9,7 @@
 namespace App\Provider\Application;
 
 use App\Library\Framework\Listener\Adapter\Application as ApplicationListener;
-use App\Library\Framework\Module\ModuleInterface;
-use App\Provider\Router\Router;
+use App\Library\Framework\Router\Router;
 use Phalcon\DiInterface;
 use Phalcon\Http\ResponseInterface;
 use Phalcon\Mvc\Application as MvcApplication;
@@ -41,9 +40,8 @@ class Application extends MvcApplication {
      * @return ResponseInterface
      */
     public function handle($uri = null) {
-        /* @var Router $router */
-        $router = container('router');
-        return parent::handle($router->getVersionFeatureUri());
+        /* @see Router::getVersionFeatureUri() */
+        return parent::handle(container('router')->getVersionFeatureUri());
     }
 
     /**

@@ -19,4 +19,10 @@ return [
         'status_code'   => '404',
         'error_message' => ''
     ],
+
+    'notFound' => [
+        'controller'    => 'error',
+        'action'        => 'notFound',
+        'status_code'   => '404'
+    ]
 ];

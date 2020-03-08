@@ -8,4 +8,6 @@ A phalcon template for multi module
 - [x] Incorrect route and error message
 - [x] Json view
 - [x] Correct error handler
-- [ ] Correct default module forward
+- [x] Correct default module forward
+- [ ] Distribute RESTful automatically
+- [ ] Deep routing

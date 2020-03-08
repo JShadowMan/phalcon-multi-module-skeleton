@@ -19,4 +19,6 @@ class ErrorController extends AbstractController {
 
     public function serverInternalErrorAction() {}
 
+    public function notFoundAction() {}
+
 }
