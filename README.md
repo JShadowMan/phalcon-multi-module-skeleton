@@ -9,6 +9,6 @@ A phalcon template for multi module
 - [x] Json view
 - [x] Correct error handler
 - [x] Correct default module forward
-- [ ] Distribute RESTful automatically
+- [x] Distribute RESTful automatically
 - [ ] Deep routing
 - [ ] Tool to create empty module
