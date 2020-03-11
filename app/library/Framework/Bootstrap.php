@@ -8,7 +8,7 @@
  */
 namespace App\Library\Framework;
 
-use App\Provider\Application\Application;
+use App\Library\Framework\Application\Application;
 use App\Provider\Environment\ServiceProvider as EnvironmentServiceProvider;
 use App\Provider\ErrorHandler\ServiceProvider as ErrorHandlerServiceProvider;
 use App\Provider\EventsManager\ServiceProvider as EventsManagerServiceProvider;

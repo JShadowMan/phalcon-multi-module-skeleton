@@ -6,10 +6,9 @@
  * @license   MIT License
  * @link      https://github.com/lsalio/phalcon-skeleton
  */
-namespace App\Provider\Application;
+namespace App\Library\Framework\Application;
 
 use App\Library\Framework\Listener\Adapter\Application as ApplicationListener;
-use App\Library\Framework\Router\Router;
 use Phalcon\DiInterface;
 use Phalcon\Http\ResponseInterface;
 use Phalcon\Mvc\Application as MvcApplication;
@@ -17,7 +16,8 @@ use Phalcon\Mvc\Application as MvcApplication;
 
 /**
  * Class Application
- * @package App\Provider\Application
+ *
+ * @package App\Library\Framework\Application
  */
 class Application extends MvcApplication {
 

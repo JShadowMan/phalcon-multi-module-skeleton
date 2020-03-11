@@ -6,14 +6,15 @@
  * @license   MIT License
  * @link      https://github.com/lsalio/phalcon-skeleton
  */
-namespace App\Provider\Translator;
-
+namespace App\Library\Framework\Translator;
 
 use Phalcon\Translate\Adapter;
 
+
 /**
  * Class Factory
- * @package App\Provider\Translator
+ *
+ * @package App\Library\Framework\Translator
  */
 class Factory {
 
@@ -47,7 +48,7 @@ class Factory {
     }
 
     /**
-     *
+     * Gets short name of the language
      *
      * @param string $language
      * @return string

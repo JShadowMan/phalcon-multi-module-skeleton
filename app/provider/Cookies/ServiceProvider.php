@@ -8,6 +8,7 @@
  */
 namespace App\Provider\Cookies;
 
+use App\Library\Framework\Http\Response\Cookies;
 use App\Provider\AbstractServiceProvider;
 
 

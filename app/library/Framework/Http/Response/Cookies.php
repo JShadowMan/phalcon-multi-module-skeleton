@@ -6,14 +6,15 @@
  * @license   MIT License
  * @link      https://github.com/lsalio/phalcon-skeleton
  */
-namespace App\Provider\Cookies;
+namespace App\Library\Framework\Http\Response;
 
 use Phalcon\Http\Response\Cookies as HttpCookies;
 
 
 /**
  * Class Cookies
- * @package App\Provider\Cookies
+ *
+ * @package App\Library\Framework\Http\Response
  */
 class Cookies extends HttpCookies {
 

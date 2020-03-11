@@ -8,6 +8,7 @@
  */
 namespace App\Provider\Translator;
 
+use App\Library\Framework\Translator\Factory;
 use App\Provider\AbstractServiceProvider;
 
 

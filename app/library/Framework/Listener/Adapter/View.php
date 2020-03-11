@@ -29,7 +29,6 @@ class View extends AbstractListener {
      *
      */
     public function notFoundView(Event $event, ViewBaseInterface $view, string $engine_path) {
-        // @TODO logger on not found
         if ($event->isCancelable()) {
             $event->stop();
         }

@@ -6,7 +6,7 @@
  * @license   MIT License
  * @link      https://github.com/lsalio/phalcon-skeleton
  */
-namespace App\Provider\DispatcherTemplate;
+namespace App\Library\Framework\Dispatcher;
 
 use App\Library\Framework\Feature\Version;
 use Phalcon\Mvc\Dispatcher as MvcDispatcher;
@@ -14,7 +14,8 @@ use Phalcon\Mvc\Dispatcher as MvcDispatcher;
 
 /**
  * Class Dispatcher
- * @package App\Provider\DispatcherTemplate
+ *
+ * @package App\Library\Framework\Dispatcher
  */
 class Dispatcher extends MvcDispatcher {
 

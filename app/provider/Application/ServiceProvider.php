@@ -8,6 +8,7 @@
  */
 namespace App\Provider\Application;
 
+use App\Library\Framework\Application\Application;
 use App\Provider\AbstractServiceProvider;
 
 
