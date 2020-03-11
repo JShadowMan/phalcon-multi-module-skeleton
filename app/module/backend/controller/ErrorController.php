@@ -9,6 +9,7 @@
 namespace App\Backend\Controller;
 
 use App\Backend\Library\Mvc\Controller\AbstractController;
+use Throwable;
 
 
 /**
@@ -17,7 +18,7 @@ use App\Backend\Library\Mvc\Controller\AbstractController;
  */
 class ErrorController extends AbstractController {
 
-    public function serverInternalErrorAction(\Throwable $exception) {
+    public function serverInternalErrorAction(Throwable $exception) {
         $this->jsonr->error($exception->getCode(), $exception->getMessage());
     }
 

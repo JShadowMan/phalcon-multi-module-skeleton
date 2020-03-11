@@ -10,9 +10,11 @@ namespace App\Library\Framework\Listener\Adapter;
 
 use App\Library\Framework\Feature\Version;
 use App\Library\Framework\Listener\AbstractListener;
+use App\Library\Framework\Mvc\Controller\Tag\Deeper;
 use Exception;
 use Phalcon\Events\Event;
 use Phalcon\Mvc\Dispatcher as MvcDispatcher;
+use Phalcon\Text;
 use Throwable;
 
 
@@ -61,6 +63,20 @@ class Dispatcher extends AbstractListener {
     }
 
     /**
+     * Checks the loop can be deeper
+     *
+     * @param Event $event
+     * @param MvcDispatcher $dispatcher
+     */
+    public function beforeNotFoundAction(Event $event, MvcDispatcher $dispatcher) {
+        if (get_class($dispatcher->getActiveController()) === $dispatcher->getHandlerClass()) {
+            if (container($dispatcher->getHandlerClass()) instanceof Deeper) {
+                $this->doDeeperForward($dispatcher);
+            }
+        }
+    }
+
+    /**
      * Detect a corrected error forward and dispatch it
      *
      * @param MvcDispatcher $dispatcher
@@ -85,6 +101,24 @@ class Dispatcher extends AbstractListener {
             container('response')->setStatusCode($error->status_code);
         }
         return $dispatcher->setReturnedValue($error->error_message);
+    }
+
+    /**
+     * Deeper forward and dispatch it
+     *
+     * @param MvcDispatcher $dispatcher
+     */
+    protected function doDeeperForward(MvcDispatcher $dispatcher) {
+        $params = $dispatcher->getParams();
+        $dispatcher->forward([
+            'namespace' => join('\\', [
+                $dispatcher->getNamespaceName(),
+                Text::camelize($dispatcher->getControllerName())
+            ]),
+            'controller' => $dispatcher->getActionName(),
+            'action' => empty($params) ? $dispatcher->getDefaultAction() : array_shift($params),
+            'params' => $params
+        ]);
     }
 
 }

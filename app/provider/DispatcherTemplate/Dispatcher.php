@@ -44,4 +44,13 @@ class Dispatcher extends MvcDispatcher {
         return $this->getModuleName() ?: container('app')->getDefaultModule();
     }
 
+    /**
+     * Gets the name of the default action
+     *
+     * @return string
+     */
+    public function getDefaultAction(): string {
+        return $this->_defaultAction;
+    }
+
 }
