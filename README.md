@@ -12,3 +12,5 @@ A phalcon template for multi module
 - [x] Distribute RESTful automatically
 - [x] Deep routing
 - [ ] Tool to create empty module
+- [ ] Multi database & cache support
+- [ ] Cli Application supports
