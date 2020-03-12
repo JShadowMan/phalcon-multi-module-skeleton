@@ -15,6 +15,8 @@
         "ext-json": "*",
         "ext-openssl": "*",
         "ext-mbstring": "*",
+        "ext-redis": "^5.0",
+        "ext-phalcon": "^3.4",
         "vlucas/phpdotenv": "^4.1",
         "filp/whoops": "^2.7",
         "league/flysystem": "^1.0"

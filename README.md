@@ -13,4 +13,4 @@ A phalcon template for multi module
 - [x] Deep routing(with forward)
 - [ ] Tool to create empty module
 - [ ] Multi database & cache support
-- [ ] Cli Application supports
+- [ ] Cli Application supports(?)
