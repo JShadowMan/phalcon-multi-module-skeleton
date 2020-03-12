@@ -10,7 +10,7 @@ A phalcon template for multi module
 - [x] Correct error handler
 - [x] Correct default module forward
 - [x] Distribute RESTful automatically
-- [x] Deep routing
+- [x] Deep routing(with forward)
 - [ ] Tool to create empty module
 - [ ] Multi database & cache support
 - [ ] Cli Application supports

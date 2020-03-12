@@ -18,6 +18,9 @@ use App\Backend\Library\Mvc\Controller\AbstractController;
  */
 class DeeperController extends AbstractController {
 
+    /**
+     * Greet again
+     */
     public function sayAction() {
         $this->jsonr->success(['text' => 'see you again', 'params' => $this->dispatcher->getParams()]);
     }

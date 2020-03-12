@@ -19,6 +19,9 @@ use App\Library\Framework\Mvc\Controller\Tag\Deeper;
  */
 class WelcomeController extends AbstractController implements Deeper {
 
+    /**
+     * Greet
+     */
     public function sayAction() {
         $this->jsonr->success(['text' => 'nice to meet you']);
     }

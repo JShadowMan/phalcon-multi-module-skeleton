@@ -20,6 +20,28 @@ use Phalcon\Mvc\Dispatcher as MvcDispatcher;
 class Dispatcher extends MvcDispatcher {
 
     /**
+     * Overrides forward to detect deeper request
+     *
+     * @param array $forward
+     */
+    public function forward($forward) {
+        $params = [];
+        if (isset($forward['controller']) && strpos($forward['controller'], '/') !== false) {
+            $params = explode('/', $forward['controller']);
+            $forward['controller'] = array_shift($params);
+        }
+        if (isset($forward['action']) && strpos($forward['action'], '/') !== false) {
+            $params = array_merge($params, explode('/', $forward['action']));
+        }
+        if (!empty($params)) {
+            $forward['action'] = array_shift($params);
+        }
+
+        $forward['params'] = $params;
+        return parent::forward($forward);
+    }
+
+    /**
      * Load config
      *
      * @param array $config
