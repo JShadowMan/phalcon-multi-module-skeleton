@@ -14,3 +14,4 @@ A phalcon template for multi module
 - [ ] Tool to create empty module
 - [ ] Multi database & cache support
 - [ ] Cli Application supports(?)
+- [ ] Migrate to component under composer
