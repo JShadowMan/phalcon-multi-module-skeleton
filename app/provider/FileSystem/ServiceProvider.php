@@ -4,7 +4,7 @@
  *
  * @copyright Copyright (C) 2020 Jayson Wang
  * @license   MIT License
- * @link      https://github.com/lsalio/phalcon-skeleton
+ * @link      https://github.com/wjiec/phalcon-skeleton
  */
 namespace App\Provider\FileSystem;
 
