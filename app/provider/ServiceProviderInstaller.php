@@ -13,14 +13,14 @@ namespace App\Provider;
  * Class ServiceProviderInstaller
  * @package App\Provider
  */
-final class ServiceProviderInstaller {
+class ServiceProviderInstaller {
 
     /**
      * Install and setup provider
      *
      * @param ServiceProviderInterface $provider
      */
-    final public static function setup(ServiceProviderInterface $provider) {
+    public static function setup(ServiceProviderInterface $provider) {
         $provider->register();
         $provider->initialize();
     }

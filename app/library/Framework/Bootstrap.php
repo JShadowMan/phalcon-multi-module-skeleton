@@ -23,7 +23,7 @@ use Phalcon\DiInterface;
  * Class Bootstrap
  * @package App\Library\Framework
  */
-final class Bootstrap {
+class Bootstrap {
 
     /**
      * Application instance
@@ -49,7 +49,7 @@ final class Bootstrap {
     /**
      * Bootstrap constructor.
      */
-    final public function __construct() {
+    public function __construct() {
         $this->di = new FactoryDefault();
         Di::setDefault($this->di);
         $this->di->setShared('bootstrap', $this);
@@ -77,23 +77,23 @@ final class Bootstrap {
      *
      * @return string
      */
-    final public function getEnvironment(): string {
+    public function getEnvironment(): string {
         return $this->environment;
     }
 
     /**
      * Run the application
      *
-     * @return $this
+     * @return string
      */
-    final public function run(): string {
+    public function run(): string {
         return $this->app->handle()->getContent();
     }
 
     /**
      * Setup the application environment
      */
-    final private function setupEnvironment() {
+    private function setupEnvironment() {
         $this->environment = env('APP_ENV', 'development');
         return $this->setupServiceProvider(new EnvironmentServiceProvider($this->di));
     }
@@ -104,7 +104,7 @@ final class Bootstrap {
      * @param ServiceProviderInterface $provider
      * @return Bootstrap
      */
-    final private function setupServiceProvider(ServiceProviderInterface $provider) {
+    private function setupServiceProvider(ServiceProviderInterface $provider) {
         ServiceProviderInstaller::setup($provider);
         return $this;
     }
@@ -115,7 +115,7 @@ final class Bootstrap {
      * @param array $providers
      * @return $this
      */
-    final private function setupServiceProviders(array $providers) {
+    private function setupServiceProviders(array $providers) {
         foreach ($providers as $provider) {
             $this->setupServiceProvider(new $provider($this->di));
         }
@@ -128,7 +128,7 @@ final class Bootstrap {
      * @param array $services
      * @return Bootstrap
      */
-    final private function setupServices(array $services) {
+    private function setupServices(array $services) {
         foreach ($services as $name => $service) {
             $this->di->setShared($name, $services);
         }
