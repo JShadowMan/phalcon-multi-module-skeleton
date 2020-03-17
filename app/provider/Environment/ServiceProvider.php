@@ -16,7 +16,7 @@ use App\Provider\AbstractServiceProvider;
  * Class ServiceProvider
  * @package App\Provider\Environment
  */
-final class ServiceProvider extends AbstractServiceProvider {
+class ServiceProvider extends AbstractServiceProvider {
 
     /**
      * Name of the service
@@ -28,7 +28,7 @@ final class ServiceProvider extends AbstractServiceProvider {
     /**
      * @inheritDoc
      */
-    final public function register() {
+    public function register() {
         /* @var $bootstrap Bootstrap */
         $bootstrap = $this->di->getShared('bootstrap');
         $this->di->set($this->service_name, function() use ($bootstrap) {

@@ -17,13 +17,13 @@ use Whoops\Handler\Handler;
  * Class LoggerHandler
  * @package App\Library\Framework\Exception\Handler
  */
-final class LoggerHandler extends Handler {
+class LoggerHandler extends Handler {
 
     /**
      * @inheritDoc
      * @return int|null
      */
-    final public function handle() {
+    public function handle() {
         if ($logger = $this->getLogger()) {
             $logger->error($this->getLogContents());
         }
@@ -35,7 +35,7 @@ final class LoggerHandler extends Handler {
      *
      * @return LoggerInterface|null
      */
-    final private function getLogger(): ?LoggerInterface {
+    private function getLogger(): ?LoggerInterface {
         if (container()->has('logger')) {
             return container('logger');
         }
@@ -47,7 +47,7 @@ final class LoggerHandler extends Handler {
      *
      * @return string
      */
-    final private function getLogContents(): string {
+    private function getLogContents(): string {
         $exception = $this->getException();
         return sprintf("<%s:%d> %s: %s\n%s STACKTRACE %s\n%s",
             $exception->getFile(), $exception->getLine(),
@@ -62,7 +62,7 @@ final class LoggerHandler extends Handler {
      *
      * @return string
      */
-    final private function getStackTrace(): string {
+    private function getStackTrace(): string {
         $frames = $this->getInspector()->getFrames();
 
         $stacktrace = '';
@@ -82,7 +82,7 @@ final class LoggerHandler extends Handler {
      * @param Frame $frame
      * @return string
      */
-    final private function getFunctionArgs(Frame $frame): string {
+    private function getFunctionArgs(Frame $frame): string {
         return join(",", array_map(function($arg) {
             switch (true) {
                 case is_string($arg):   return "string{{$arg}}";
@@ -100,7 +100,7 @@ final class LoggerHandler extends Handler {
      *
      * @return string
      */
-    final private function getTitleSeparator(): string {
+    private function getTitleSeparator(): string {
         return str_pad('', 24, '=');
     }
 

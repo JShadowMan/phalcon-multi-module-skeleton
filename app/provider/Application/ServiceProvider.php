@@ -16,7 +16,7 @@ use App\Provider\AbstractServiceProvider;
  * Class ServiceProvider
  * @package App\Provider\Application
  */
-final class ServiceProvider extends AbstractServiceProvider {
+class ServiceProvider extends AbstractServiceProvider {
 
     /**
      * Name of the service
@@ -28,7 +28,7 @@ final class ServiceProvider extends AbstractServiceProvider {
     /**
      * @inheritdoc
      */
-    final public function register() {
+    public function register() {
         $this->di->setShared($this->service_name, function() {
             return new Application();
         });

@@ -16,7 +16,7 @@ use App\Provider\Field\Store\StoreInterface;
  * Class Mixed
  * @package App\Provider\Field\Store\Adapter
  */
-final class Mixed extends AbstractStore {
+class Mixed extends AbstractStore {
 
     /**
      * @var StoreInterface[]
@@ -27,7 +27,7 @@ final class Mixed extends AbstractStore {
      * Mixed constructor.
      * @param StoreInterface[] $stores
      */
-    final public function __construct(StoreInterface ...$stores) {
+    public function __construct(StoreInterface ...$stores) {
         $this->stores = $stores;
     }
 
@@ -37,7 +37,7 @@ final class Mixed extends AbstractStore {
      * @param string $key
      * @return bool
      */
-    final public function exists(string $key): bool {
+    public function exists(string $key): bool {
         foreach ($this->stores as $store) {
             if ($store->exists($key)) {
                 return true;
@@ -54,7 +54,7 @@ final class Mixed extends AbstractStore {
      * @param null $default
      * @return string|integer|float|bool|null
      */
-    final public function get(string $key, $default = null) {
+    public function get(string $key, $default = null) {
         $values = array_reduce($this->stores, function(array $carry, StoreInterface $store) use ($key) {
             if (!isset($carry['hit'])) {
                 if ($store->exists($key)) {
@@ -81,7 +81,7 @@ final class Mixed extends AbstractStore {
      * @param string $value
      * @return StoreInterface
      */
-    final public function setString(string $key, string $value): StoreInterface {
+    public function setString(string $key, string $value): StoreInterface {
         foreach ($this->stores as $store) {
             $store->setString($key, $value);
         }
@@ -95,7 +95,7 @@ final class Mixed extends AbstractStore {
      * @param int $value
      * @return StoreInterface
      */
-    final public function setInteger(string $key, int $value): StoreInterface {
+    public function setInteger(string $key, int $value): StoreInterface {
         foreach ($this->stores as $store) {
             $store->setInteger($key, $value);
         }
@@ -109,7 +109,7 @@ final class Mixed extends AbstractStore {
      * @param int $value
      * @return StoreInterface
      */
-    final public function setFloat(string $key, int $value): StoreInterface {
+    public function setFloat(string $key, int $value): StoreInterface {
         foreach ($this->stores as $store) {
             $store->setFloat($key, $value);
         }
@@ -123,7 +123,7 @@ final class Mixed extends AbstractStore {
      * @param bool $value
      * @return StoreInterface
      */
-    final public function setBoolean(string $key, bool $value): StoreInterface {
+    public function setBoolean(string $key, bool $value): StoreInterface {
         foreach ($this->stores as $store) {
             $store->setBoolean($key, $value);
         }

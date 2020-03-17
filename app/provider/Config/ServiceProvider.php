@@ -16,7 +16,7 @@ use App\Provider\AbstractServiceProvider;
  * Class ServiceProvider
  * @package App\Provider\Config
  */
-final class ServiceProvider extends AbstractServiceProvider {
+class ServiceProvider extends AbstractServiceProvider {
 
     /**
      * Name of the service
@@ -44,7 +44,7 @@ final class ServiceProvider extends AbstractServiceProvider {
     /**
      * @inheritDoc
      */
-    final public function register() {
+    public function register() {
         $configs = $this->configs;
         $this->di->setShared($this->service_name, function() use ($configs) {
             return (new Factory('global'))->load($configs);

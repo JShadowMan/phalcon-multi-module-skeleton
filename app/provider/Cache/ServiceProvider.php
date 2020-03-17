@@ -17,7 +17,7 @@ use Phalcon\Config;
  * Class ServiceProvider
  * @package App\Provider\Cache
  */
-final class ServiceProvider extends AbstractServiceProvider {
+class ServiceProvider extends AbstractServiceProvider {
 
     /**
      * Name of the service
@@ -29,7 +29,7 @@ final class ServiceProvider extends AbstractServiceProvider {
     /**
      * @inheritdoc
      */
-    final public function register() {
+    public function register() {
         $this->di->setShared($this->service_name, function() {
             $config = container('config')->cache;
             /* @var Config $driver_config */

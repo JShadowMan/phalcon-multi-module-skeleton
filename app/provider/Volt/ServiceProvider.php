@@ -18,7 +18,7 @@ use Phalcon\Mvc\ViewBaseInterface;
  * Class ServiceProvider
  * @package App\Provider\Volt
  */
-final class ServiceProvider extends AbstractServiceProvider {
+class ServiceProvider extends AbstractServiceProvider {
 
     /**
      * Name of the service
@@ -30,7 +30,7 @@ final class ServiceProvider extends AbstractServiceProvider {
     /**
      * @inheritDoc
      */
-    final public function register() {
+    public function register() {
         $this->di->set($this->service_name, function(ViewBaseInterface $view, DiInterface $di = null) {
             $volt = new Volt($view, $di ?? container());
 

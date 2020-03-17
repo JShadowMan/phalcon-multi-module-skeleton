@@ -17,7 +17,7 @@ use App\Provider\AbstractServiceProvider;
  * Class ServiceProvider
  * @package App\Provider\Router
  */
-final class ServiceProvider extends AbstractServiceProvider {
+class ServiceProvider extends AbstractServiceProvider {
 
     /**
      * Name of the service
@@ -29,7 +29,7 @@ final class ServiceProvider extends AbstractServiceProvider {
     /**
      * @inheritDoc
      */
-    final public function register() {
+    public function register() {
         $this->di->setShared($this->service_name, function() {
             $router = new Router();
             if (!isset($_GET['_url'])) {

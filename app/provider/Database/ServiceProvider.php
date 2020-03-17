@@ -18,7 +18,7 @@ use Phalcon\Db\Adapter;
  * Class ServiceProvider
  * @package App\Provider\Database
  */
-final class ServiceProvider extends AbstractServiceProvider {
+class ServiceProvider extends AbstractServiceProvider {
 
     /**
      * Name of the service
@@ -30,7 +30,7 @@ final class ServiceProvider extends AbstractServiceProvider {
     /**
      * @inheritDoc
      */
-    final public function register() {
+    public function register() {
         $this->di->setShared($this->service_name, function() {
             $config = container('config')->database;
             /* @var $driver_config Config */

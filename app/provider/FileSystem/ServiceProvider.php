@@ -17,7 +17,7 @@ use League\Flysystem\Filesystem;
  * Class ServiceProvider
  * @package App\Provider\FileSystem
  */
-final class ServiceProvider extends AbstractServiceProvider {
+class ServiceProvider extends AbstractServiceProvider {
 
     /**
      * Name of the service
@@ -29,7 +29,7 @@ final class ServiceProvider extends AbstractServiceProvider {
     /**
      * @inheritDoc
      */
-    final public function register() {
+    public function register() {
         $this->di->set($this->service_name, function(?string $root = null) {
             if (!$root) {
                 $root = APP_DOCUMENT_ROOT;

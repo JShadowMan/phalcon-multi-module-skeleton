@@ -16,7 +16,7 @@ use Phalcon\Events\Manager as EventsManager;
  * Class ServiceProvider
  * @package App\Provider\EventsManager
  */
-final class ServiceProvider extends AbstractServiceProvider {
+class ServiceProvider extends AbstractServiceProvider {
 
     /**
      * Name of the service
@@ -28,7 +28,7 @@ final class ServiceProvider extends AbstractServiceProvider {
     /**
      * @inheritDoc
      */
-    final public function register() {
+    public function register() {
         $this->di->setShared($this->service_name, function() {
             $manager = new EventsManager();
             $manager->enablePriorities(true);

@@ -16,7 +16,7 @@ use Phalcon\Mvc\Url;
  * Class ServiceProvider
  * @package App\Provider\UrlResolver
  */
-final class ServiceProvider extends AbstractServiceProvider {
+class ServiceProvider extends AbstractServiceProvider {
 
     /**
      * Name of the service
@@ -28,7 +28,7 @@ final class ServiceProvider extends AbstractServiceProvider {
     /**
      * @inheritDoc
      */
-    final public function register() {
+    public function register() {
         $this->di->setShared($this->service_name, function() {
             $url = new Url();
 

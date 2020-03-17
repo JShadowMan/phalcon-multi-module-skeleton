@@ -19,7 +19,7 @@ use App\Provider\AbstractServiceProvider;
  * Class ServiceProvider
  * @package App\Provider\Field
  */
-final class ServiceProvider extends AbstractServiceProvider {
+class ServiceProvider extends AbstractServiceProvider {
 
     /**
      * Name of the service
@@ -31,7 +31,7 @@ final class ServiceProvider extends AbstractServiceProvider {
     /**
      * @inheritdoc
      */
-    final public function register() {
+    public function register() {
         $this->di->set($this->service_name, function() {
             return new Mixed(new Memory(), new Cache(), new Database());
         });

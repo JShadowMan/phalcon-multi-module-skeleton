@@ -18,7 +18,7 @@ use Whoops\Run;
  * Class ServiceProvider
  * @package App\Provider\ErrorHandler
  */
-final class ServiceProvider extends AbstractServiceProvider {
+class ServiceProvider extends AbstractServiceProvider {
 
     /**
      * Name of the service
@@ -30,7 +30,7 @@ final class ServiceProvider extends AbstractServiceProvider {
     /**
      * @inheritDoc
      */
-    final public function register() {
+    public function register() {
         $this->di->setShared("{$this->service_name}.loggerHandler", LoggerHandler::class);
         $this->di->setShared("{$this->service_name}.prettyPageHandler", PrettyPageHandler::class);
 
@@ -49,7 +49,7 @@ final class ServiceProvider extends AbstractServiceProvider {
     /**
      * @inheritDoc
      */
-    final public function initialize() {
+    public function initialize() {
         /* @var $run Run */
         $run = container($this->service_name);
         $run->register();

@@ -15,7 +15,7 @@ use App\Provider\AbstractServiceProvider;
  * Class ServiceProvider
  * @package App\Provider\Timezone
  */
-final class ServiceProvider extends AbstractServiceProvider {
+class ServiceProvider extends AbstractServiceProvider {
 
     /**
      * Name of the service
@@ -27,7 +27,7 @@ final class ServiceProvider extends AbstractServiceProvider {
     /**
      * @inheritDoc
      */
-    final public function register() {
+    public function register() {
         $this->di->set($this->service_name, function(?string $timezone = null) {
             $config = container('config')->timezone;
             if (!$timezone) {
@@ -42,7 +42,7 @@ final class ServiceProvider extends AbstractServiceProvider {
     /**
      * @inheritDoc
      */
-    final public function initialize() {
+    public function initialize() {
         container($this->service_name);
     }
 

@@ -18,7 +18,7 @@ use Phalcon\Logger\Formatter\Line as LineFormatter;
  * Class ServiceProvider
  * @package App\Provider\Logger
  */
-final class ServiceProvider extends AbstractServiceProvider {
+class ServiceProvider extends AbstractServiceProvider {
 
     /**
      * Name of the service
@@ -30,7 +30,7 @@ final class ServiceProvider extends AbstractServiceProvider {
     /**
      * @inheritDoc
      */
-    final public function register() {
+    public function register() {
         $this->di->set($this->service_name, function(?string $filename = null) {
             $config = container('config')->logger;
             switch (strtolower($config->level)) {
