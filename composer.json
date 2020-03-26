@@ -1,25 +1,19 @@
 {
-    "name": "jayson/phalcon-skeleton",
-    "description": "A template for phalcon",
+    "name": "wjiec/bops-example",
+    "description": "A example for bops",
     "type": "project",
-    "license": "BSD 3-Clause",
+    "license": "MIT",
     "authors": [
         {
-            "name": "Jayson",
+            "name": "Jayson Wang",
             "email": "jayson@laboys.org"
         }
     ],
     "require": {
         "php": ">=7.2",
-        "ext-pdo": "*",
         "ext-json": "*",
-        "ext-openssl": "*",
         "ext-mbstring": "*",
-        "ext-redis": "^5.0",
-        "ext-phalcon": "^3.4",
-        "vlucas/phpdotenv": "^4.1",
-        "filp/whoops": "^2.7",
-        "league/flysystem": "^1.0"
+        "wjiec/bops": "^1.0"
     },
     "autoload": {
         "psr-4": {

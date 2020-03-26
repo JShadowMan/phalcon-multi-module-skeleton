@@ -1,14 +1,14 @@
 <?php
 /**
- * This file is part of phalcon-skeleton
+ * This file is part of bops-example
  *
  * @copyright Copyright (C) 2020 Jayson Wang
  * @license   MIT License
- * @link      https://github.com/wjiec/phalcon-skeleton
+ * @link      https://github.com/wjiec/php-bops-example
  */
 namespace App\Backend;
 
-use App\Library\Framework\Module\AbstractModule;
+use Bops\Module\AbstractModule;
 use Phalcon\DiInterface;
 use Phalcon\Loader;
 
@@ -33,7 +33,7 @@ class Module extends AbstractModule {
      *
      * @return string
      */
-    protected function configDirPath(): string {
+    protected function configDir(): string {
         return __DIR__ . '/config';
     }
 

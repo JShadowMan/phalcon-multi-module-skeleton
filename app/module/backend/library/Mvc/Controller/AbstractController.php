@@ -1,20 +1,24 @@
 <?php
 /**
- * This file is part of phalcon-skeleton
+ * This file is part of bops-example
  *
  * @copyright Copyright (C) 2020 Jayson Wang
  * @license   MIT License
- * @link      https://github.com/wjiec/phalcon-skeleton
+ * @link      https://github.com/wjiec/php-bops-example
  */
 namespace App\Backend\Library\Mvc\Controller;
 
-use App\Library\Framework\Mvc\Controller\AbstractController as GlobalAbstractController;
-use App\Provider\ResponseJson\Mixin;
+use Bops\Mvc\Controller;
+use Bops\Mvc\View\Json\Formatter\Standard;
 
 
 /**
  * Class AbstractController
+ *
  * @package App\Backend\Library\Mvc\Controller
- * @mixin Mixin
  */
-class AbstractController extends GlobalAbstractController {}
+class AbstractController extends Controller {
+
+    use Standard;
+
+}

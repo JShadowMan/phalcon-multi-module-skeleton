@@ -6,15 +6,15 @@
  * @author    Jayson Wang <jayson@laboys.org>
  * @copyright Copyright (C) 2020 Jayson Wang
  * @license   MIT License
- * @link      https://github.com/wjiec/phalcon-skeleton
+ * @link      https://github.com/wjiec/php-bops-example
  */
 declare(strict_types=1);
 
-use App\Library\Framework\Bootstrap;
+use Bops\Bootstrap;
+use Bops\Navigator\Adapter\Standard;
+
+require_once __DIR__ . '/../vendor/autoload.php';
 
 
-// register the application bootstrap
-require_once __DIR__ . '/../app/bootstrap.php';
-
-// execute bootstrap and output response
-echo (new Bootstrap())->run();
+/** @noinspection PhpUnhandledExceptionInspection */
+echo (new Bootstrap(new Standard(dirname(__DIR__))))->run();

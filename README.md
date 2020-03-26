@@ -12,6 +12,6 @@ A phalcon template for multi module
 - [x] Distribute RESTful automatically
 - [x] Deep routing(with forward)
 - [ ] Tool to create empty module
-- [ ] Multi database & cache support
+- [x] Multi database & cache support
 - [ ] Cli Application supports(?)
-- [ ] Migrate to component under composer
+- [x] Migrate to component under composer
