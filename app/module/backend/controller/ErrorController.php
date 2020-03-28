@@ -9,6 +9,7 @@
 namespace App\Backend\Controller;
 
 use App\Backend\Library\Mvc\Controller\AbstractController;
+use Throwable;
 
 
 /**
@@ -17,8 +18,8 @@ use App\Backend\Library\Mvc\Controller\AbstractController;
  */
 class ErrorController extends AbstractController {
 
-    public function internalAction() {
-        $this->error('error message', 'code', func_get_args());
+    public function internalAction(Throwable $exception) {
+        $this->error($exception->getMessage(), $exception->getCode());
     }
 
 }

@@ -8,6 +8,7 @@
  */
 namespace App\Frontend;
 
+use App\Library\Middleware\Security;
 use Bops\Module\AbstractModule;
 use Phalcon\DiInterface;
 use Phalcon\Loader;
@@ -18,6 +19,10 @@ use Phalcon\Loader;
  * @package App\Frontend
  */
 class Module extends AbstractModule {
+
+    protected function initialize() {
+        container('middlewareQueue')->append(new Security());
+    }
 
     /**
      * Returns the name of the current module

@@ -9,6 +9,7 @@
 namespace App\Frontend\Controller;
 
 use App\Frontend\Library\Mvc\Controller\AbstractController;
+use Bops\Http\Request\Middleware\MiddlewareInterface;
 
 
 /**
@@ -17,8 +18,12 @@ use App\Frontend\Library\Mvc\Controller\AbstractController;
  */
 class ErrorController extends AbstractController {
 
-    public function serverInternalErrorAction() {}
+    public function internalAction() {}
 
     public function notFoundAction() {}
+
+    public function middlewareAction(MiddlewareInterface $middleware) {
+        $this->view->setVar('middleware_name', get_class($middleware));
+    }
 
 }
