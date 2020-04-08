@@ -13,7 +13,7 @@
         "php": ">=7.2",
         "ext-json": "*",
         "ext-mbstring": "*",
-        "wjiec/bops": "^1.0"
+        "wjiec/bops": "dev-master"
     },
     "autoload": {
         "psr-4": {
