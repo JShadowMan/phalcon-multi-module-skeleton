@@ -10,6 +10,7 @@ namespace App\Frontend\Controller;
 
 use App\Frontend\Library\Mvc\Controller\AbstractController;
 use Bops\Http\Request\Middleware\MiddlewareInterface;
+use Throwable;
 
 
 /**
@@ -18,7 +19,9 @@ use Bops\Http\Request\Middleware\MiddlewareInterface;
  */
 class ErrorController extends AbstractController {
 
-    public function internalAction() {}
+    public function internalAction(Throwable $e) {
+        $this->view->setVar('error_message', $e->getMessage());
+    }
 
     public function notFoundAction() {}
 

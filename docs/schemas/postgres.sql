@@ -2,11 +2,11 @@
 -- App structure of database
 --
 
-drop database if exists skeleton;
-create database skeleton with encoding = 'UTF8';
-alter database skeleton owner to postgres;
+drop database if exists bops;
+create database bops with encoding = 'UTF8';
+alter database bops owner to postgres;
 
-\connect skeleton;
+\connect bops;
 
 
 --

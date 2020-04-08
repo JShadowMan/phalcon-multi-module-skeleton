@@ -1,0 +1,39 @@
+version: '3'
+services:
+  redis:
+    image: "jaynos/redis"
+    volumes:
+      - ./storage/var/redis:/var/redis
+    privileged: true
+    sysctls:
+#      - vm.overcommit_memory=1
+      - net.core.somaxconn=1024
+    restart: always
+  pgsql:
+    image: "jaynos/pgsql"
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./storage/var/pgsql:/var/pgsql/data
+      - ./docs/schemas/postgres.sql:/var/pgsql/initdb.d/postgres.sql
+    restart: always
+  php:
+    image: "jaynos/phalcon:3.4.4"
+    volumes:
+      - .:/var/www
+    depends_on:
+      - pgsql
+      - redis
+    restart: always
+  nginx:
+    image: "jaynos/nginx"
+    depends_on:
+     - php
+    volumes:
+      - .:/var/www
+      - ./docs/conf/nginx/nginx.conf:/usr/local/nginx/conf/nginx.conf
+      - ./docs/conf/nginx/vhost:/usr/local/nginx/conf/vhost
+      - ./storage/log/nginx:/var/log/nginx
+    ports:
+      - "80:80"
+    restart: always

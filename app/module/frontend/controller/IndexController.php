@@ -17,6 +17,8 @@ use App\Frontend\Library\Mvc\Controller\AbstractController;
  */
 class IndexController extends AbstractController {
 
-    public function indexAction() {}
+    public function indexAction() {
+        $this->db->query('select 1=1');
+    }
 
 }
